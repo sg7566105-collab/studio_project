@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Gallery – Raj Album</title>
+    <link rel="stylesheet" href="gallery.css">
+</head>
+
+<body>
+
+<section class="gallery-section">
+
+    <h1 class="gallery-title">Album Gallery</h1>
+
+    <div class="gallery-grid">
+
+        <div class="gallery-item" style="background-image:url('image1.jpg')" onclick="openImage('image1.jpg')"></div>
+        <div class="gallery-item" style="background-image:url('image2.jpg')" onclick="openImage('image2.jpg')"></div>
+        <div class="gallery-item" style="background-image:url('image3.jpg')" onclick="openImage('image3.jpg')"></div>
+        <div class="gallery-item" style="background-image:url('image4.jpg')" onclick="openImage('image4.jpg')"></div>
+
+        <!-- Yaha aur images add kar sakte ho -->
+    </div>
+
+</section>
+
+<!-- POPUP FULL IMAGE -->
+<div id="imgModal" class="modal" onclick="closeImage()">
+    <img id="modalImage" class="modal-content">
+</div>
+
+<script>
+function openImage(src) {
+    document.getElementById("imgModal").style.display = "flex";
+    document.getElementById("modalImage").src = src;
+}
+
+function closeImage() {
+    document.getElementById("imgModal").style.display = "none";
+}
+</script>
+
+</body>
+</html>
