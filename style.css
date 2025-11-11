@@ -196,19 +196,19 @@ h1, h2, h3 {
 
 /* ABOUT */
 /* ABOUT SECTION – GLASS + PREMIUM */
+/* ABOUT SECTION – PREMIUM GLASS */
 .about-section {
     padding: 120px 40px;
     background:
         linear-gradient(rgba(255,255,255,0.55), rgba(255,255,255,0.55)),
         url('blur.png') center/cover no-repeat;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
 }
 
-/* MAIN BOX */
+/* MAIN GLASS BOX */
 .about-container {
     max-width: 1050px;
     margin: auto;
-
     display: flex;
     gap: 50px;
     align-items: center;
@@ -216,33 +216,41 @@ h1, h2, h3 {
     padding: 60px;
     border-radius: 28px;
 
-    background: rgba(255,255,255,0.35);
-    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.32);
+    backdrop-filter: blur(16px);
 
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.15);
 }
 
-/* PHOTO */
+/* IMAGE STYLING */
 .about-image {
-    width: 360px;
-    height: 460px;
-    border-radius: 25px;
+    width: 90%;
+    max-width: 300px;
+    aspect-ratio: 3/4;
 
-    background: url('about.jpg') center/cover no-repeat;
+    background: url('about.jpg') center/contain no-repeat;
+    background-color: #eee;
 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border-radius: 22px;
+    margin: auto;
 }
 
-/* TEXT AREA */
+
+/* TEXT SIDE */
+.about-content {
+    flex: 1;
+}
+
 .about-content h2 {
     font-family: "Playfair Display", serif;
     font-size: 42px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     color: #222;
+    letter-spacing: 0.5px;
 }
 
 .about-content p {
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.7;
     color: #444;
     margin-bottom: 28px;
@@ -256,8 +264,7 @@ h1, h2, h3 {
 
     background: rgba(255,255,255,0.25);
     border: 1px solid rgba(255,255,255,0.45);
-
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
 
     color: #000;
     text-decoration: none;
@@ -268,16 +275,12 @@ h1, h2, h3 {
 }
 
 .about-btn:hover {
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.50);
     transform: translateY(-3px);
 }
 
-/* MOBILE */
+/* MOBILE FRIENDLY */
 @media (max-width: 768px) {
-     .hero {
-        background-size: cover;
-        background-position: top center;
-    }
 
     .about-section {
         padding: 60px 20px;
@@ -286,20 +289,28 @@ h1, h2, h3 {
     .about-container {
         flex-direction: column;
         padding: 30px 20px;
+        gap: 30px;
     }
 
     .about-image {
         width: 100%;
-        height: 350px;
-        border-radius: 16px;
+        height: 340px;
+        border-radius: 18px;
     }
 
     .about-content h2 {
         font-size: 32px;
+        text-align: center;
     }
 
     .about-content p {
-        font-size: 16px;
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .about-btn {
+        font-size: 15px;
+        padding: 12px 32px;
     }
 }
 
@@ -412,5 +423,136 @@ h1, h2, h3 {
 html, body {
     overflow-x: hidden;
     max-width: 100%;
+}
+/* CONTACT SECTION */
+.contact-section {
+    padding: 120px 40px;
+    text-align: center;
+    background:
+        linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)),
+        url('blur.png') center/cover fixed;
+    backdrop-filter: blur(12px);
+}
+
+.contact-title {
+    font-size: 38px;
+    font-family: "Playfair Display", serif;
+    margin-bottom: 10px;
+}
+
+.contact-subtitle {
+    font-size: 17px;
+    color: #444;
+    margin-bottom: 40px;
+}
+
+.contact-container {
+    max-width: 1000px;
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+
+    background: rgba(255,255,255,0.25);
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* LEFT INFO */
+.contact-info {
+    flex: 1;
+    text-align: left;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    font-size: 17px;
+}
+
+.info-item .icon {
+    font-size: 28px;
+    margin-right: 12px;
+}
+
+/* RIGHT BUTTONS */
+.contact-buttons {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+}
+
+.contact-btn {
+    display: block;
+    width: 80%;
+    padding: 14px 0;
+    text-align: center;
+    border-radius: 30px;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+/* WhatsApp */
+.whatsapp {
+    background: #25D366;
+}
+.whatsapp:hover {
+    background: #1da855;
+}
+
+/* Instagram */
+.instagram {
+    background: #d62976;
+}
+.instagram:hover {
+    background: #ad1f62;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+
+    .contact-container {
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+
+    .contact-btn {
+        width: 100%;
+    }
+}
+/* FOOTER COPYRIGHT SECTION */
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 18px 0;
+
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255,255,255,0.35);
+
+    font-size: 15px;
+    color: #333;
+    letter-spacing: 0.5px;
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        font-size: 13px;
+        padding: 15px 0;
+    }
 }
 
