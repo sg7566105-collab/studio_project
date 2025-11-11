@@ -1,0 +1,113 @@
+/* BASE */
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: #f7f5f2;
+    overflow-x: hidden;
+}
+
+/* SECTION BACKGROUND (Glass + Blur) */
+.gallery-section {
+    padding: 100px 40px;
+    min-height: 100vh;
+
+    background:
+        linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.35)),
+        url('blur.png') center/cover no-repeat;
+    backdrop-filter: blur(10px);
+}
+
+/* HEADING */
+.gallery-title {
+    font-family: "Playfair Display", serif;
+    font-size: 42px;
+    text-align: center;
+    color: #1a1a1a;
+    margin-bottom: 50px;
+    text-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
+
+/* GRID */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+/* IMAGE CARDS – Premium Glass Style */
+.gallery-item {
+    height: 350px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(255,255,255,0.45);
+    backdrop-filter: blur(7px);
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+
+    transition: 0.35s ease;
+    cursor: pointer;
+}
+
+/* Hover Animation */
+.gallery-item:hover {
+    transform: scale(1.05);
+    filter: brightness(1.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+/* POPUP FULL IMAGE */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,0.88);
+    backdrop-filter: blur(8px);
+
+    z-index: 5000;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 18px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* Close button (optional) */
+.close-modal {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
+    .gallery-section {
+        padding: 60px 20px;
+        background-attachment: scroll;
+    }
+
+    .gallery-title {
+        font-size: 32px;
+        margin-bottom: 30px;
+    }
+
+    .gallery-item {
+        height: 300px;
+        border-radius: 16px;
+    }
+}
