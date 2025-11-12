@@ -107,56 +107,90 @@ lightbox.addEventListener("touchend", e => {
   if (startX - endX > 50) changeImage(1);
   else if (endX - startX > 50) changeImage(-1);
 });
-
-
-// ==================== TESTIMONIALS ====================
+// ==================== TESTIMONIALS DYNAMIC HANDLER ====================
 const testiSlider = document.querySelector(".testi-slider");
 const testiTrack = document.querySelector(".testi-track");
-const testiDots = document.querySelector(".testi-dots");
-const reviewForm = document.getElementById("reviewForm");
+const dotsContainer = document.querySelector(".testi-dots");
+const form = document.getElementById("reviewForm");
 
+// Unique ID for this browser/user
+let currentUserId = localStorage.getItem("userId");
+if (!currentUserId) {
+  currentUserId = "user_" + Date.now() + "_" + Math.floor(Math.random() * 1000);
+  localStorage.setItem("userId", currentUserId);
+}
+
+// Load saved testimonials
 let testimonials = JSON.parse(localStorage.getItem("testimonials")) || [
-  { text: "Raj designed our wedding album beautifully! The layouts were emotional and elegant.", name: "Priya & Aman" },
-  { text: "Loved how my engagement album came out — minimal and full of emotions!", name: "Rohan & Shruti" }
+  { text: "Raj designed our wedding album beautifully! The layouts were emotional and elegant.", name: "Priya & Aman", userId: "default" },
+  { text: "Loved how my engagement album came out — minimal and full of emotions!", name: "Rohan & Shruti", userId: "default" }
 ];
 
+// ===== Render testimonials =====
 function renderTestimonials() {
   testiTrack.innerHTML = "";
-  testimonials.forEach(t => {
+  testimonials.forEach((t, index) => {
     const card = document.createElement("div");
-    card.className = "testi-card fade";
-    card.innerHTML = `<p>"${t.text}"</p><h4>– ${t.name}</h4>`;
+    card.className = "testi-card";
+    card.innerHTML = `
+      <p>"${t.text}"</p>
+      <h4>– ${t.name}</h4>
+      ${t.userId === currentUserId ? `<button class="delete-btn" onclick="deleteReview(${index})">🗑 Delete</button>` : ""}
+    `;
     testiTrack.appendChild(card);
   });
 
+  // Grid mode for 3+ reviews
   document.querySelector(".testimonials").classList.toggle("grid-mode", testimonials.length >= 3);
-  updateTestiDots();
+  updateDots();
 }
 
-function updateTestiDots() {
-  testiDots.innerHTML = "";
+// ===== Update dots =====
+function updateDots() {
+  dotsContainer.innerHTML = "";
   testimonials.forEach((_, i) => {
     const dot = document.createElement("div");
     dot.classList.add("dot");
     if (i === 0) dot.classList.add("active");
-    dot.addEventListener("click", () => testiSlider.scrollTo({ left: testiSlider.clientWidth * i, behavior: "smooth" }));
-    testiDots.appendChild(dot);
+    dot.addEventListener("click", () => {
+      testiSlider.scrollTo({
+        left: testiSlider.clientWidth * i,
+        behavior: "smooth"
+      });
+    });
+    dotsContainer.appendChild(dot);
   });
 }
 
-reviewForm.addEventListener("submit", e => {
-  e.preventDefault();
-  const name = document.getElementById("name").value;
-  const message = document.getElementById("message").value;
-  testimonials.push({ name, text: message });
+// ===== Delete Review (only own) =====
+function deleteReview(index) {
+  if (testimonials[index].userId !== currentUserId) return; // not your review
+  testimonials.splice(index, 1);
   localStorage.setItem("testimonials", JSON.stringify(testimonials));
-  reviewForm.reset();
+  renderTestimonials();
+}
+
+// ===== Add Review =====
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  if (!name || !message) return;
+  testimonials.push({ name, text: message, userId: currentUserId });
+  localStorage.setItem("testimonials", JSON.stringify(testimonials));
+  form.reset();
   renderTestimonials();
 });
 
+// ===== Scroll dots sync =====
 testiSlider.addEventListener("scroll", () => {
   const index = Math.round(testiSlider.scrollLeft / testiSlider.clientWidth);
-  document.querySelectorAll(".testi-dots .dot").forEach((dot, i) => dot.classList.toggle("active", i === index));
+  document.querySelectorAll(".dot").forEach((dot, i) => {
+    dot.classList.toggle("active", i === index);
+  });
 });
 
 renderTestimonials();
+
+

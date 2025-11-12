@@ -456,6 +456,22 @@ html, body {
   .testimonials { padding: 70px 20px; }
   .testi-card { flex: 0 0 90%; }
 }
+/* ===== DELETE BUTTON IN TESTIMONIALS ===== */
+.delete-btn {
+  background: #ff4c4c;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-top: 8px;
+  transition: 0.3s;
+}
+.delete-btn:hover {
+  background: #d93b3b;
+}
+
 
 
 /* ===== CONTACT SECTION ===== */
