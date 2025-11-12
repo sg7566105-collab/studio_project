@@ -5,64 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery & Highlights | Raj Album</title>
   <link rel="stylesheet" href="gallery.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <!-- HERO SECTION -->
+  <!-- ===== HEADER / HERO ===== -->
   <header class="gallery-hero">
     <h1>Gallery & Highlights</h1>
-    <p>A glimpse of our creative world</p>
+    <p>Explore our premium album designs and creative glimpses</p>
 
     <div class="toggle-buttons">
       <button class="tab-btn active" data-target="album-section">Albums</button>
-      <button class="tab-btn" data-target="insta-section">Glimpse</button>
+      <button class="tab-btn" data-target="glimpse-section">Glimpses</button>
     </div>
   </header>
 
-  <!-- ALBUM GALLERY SECTION -->
+  <!-- ===== ALBUM SECTION ===== -->
   <section id="album-section" class="gallery-section visible">
-    <div class="gallery-grid">
-      <div class="gallery-item" style="background-image:url('m1.jpg')" onclick="openLightbox(0)"></div>
-      <div class="gallery-item" style="background-image:url('m2.jpg')" onclick="openLightbox(1)"></div>
-      <div class="gallery-item" style="background-image:url('m3.jpg')" onclick="openLightbox(2)"></div>
-      <div class="gallery-item" style="background-image:url('m6.jpg')" onclick="openLightbox(3)"></div>
+    <h2>Our Featured Albums</h2>
+
+    <div class="album-grid">
+      <div class="album-card" onclick="openAlbum('wedding')">
+        <img src="albums/wedding/cover.jpg" alt="Wedding Album">
+        <h3>Wedding Moments</h3>
+      </div>
+
+      <div class="album-card" onclick="openAlbum('prewedding')">
+        <img src="albums/prewedding/cover.jpg" alt="Pre-Wedding Album">
+        <h3>Pre-Wedding Album</h3>
+      </div>
+
+      <div class="album-card" onclick="openAlbum('engagement')">
+        <img src="albums/engagement/cover.jpg" alt="Engagement Album">
+        <h3>Engagement</h3>
+      </div>
+
+      <div class="album-card" onclick="openAlbum('haldi')">
+        <img src="albums/haldi/cover.jpg" alt="Haldi Album">
+        <h3>Haldi Ceremony</h3>
+      </div>
+
+      <div class="album-card" onclick="openAlbum('couple')">
+        <img src="albums/couple/cover.jpg" alt="couple Album">
+        <h3>couple album</h3>
+      </div>
+
+      <div class="album-card" onclick="openAlbum('birthday')">
+        <img src="albums/birthday/cover.jpg" alt="Birthday Album">
+        <h3>Birthday Events</h3>
+      </div>
     </div>
   </section>
 
-  <!-- INSTAGRAM SECTION -->
- <!-- INSTAGRAM SECTION -->
-<section id="insta-section" class="gallery-section">
-  <div class="insta-grid">
-    <div class="insta-item" style="background-image:url('instagram1.jpg')" onclick="openInstaLightbox(0)"></div>
-    <div class="insta-item" style="background-image:url('instagram2.jpg')" onclick="openInstaLightbox(1)"></div>
-    <div class="insta-item" style="background-image:url('instagram3.jpg')" onclick="openInstaLightbox(2)"></div>
-    <div class="insta-item" style="background-image:url('instagram4.jpg')" onclick="openInstaLightbox(3)"></div>
-    <div class="insta-item" style="background-image:url('instagram5.jpg')" onclick="openInstaLightbox(4)"></div>
-    <div class="insta-item" style="background-image:url('instagram1.jpg')" onclick="openInstaLightbox(5)"></div>
+  <!-- ===== GLIMPSES SECTION ===== -->
+  <section id="glimpse-section" class="gallery-section">
+    <h2>Our Glimpses</h2>
+
+    <div class="glimpse-grid">
+      <div class="glimpse" style="background-image:url('instagram1.jpg')" onclick="openInstaLightbox(0)"></div>
+      <div class="glimpse" style="background-image:url('instagram2.jpg')" onclick="openInstaLightbox(1)"></div>
+      <div class="glimpse" style="background-image:url('instagram3.jpg')" onclick="openInstaLightbox(2)"></div>
+      <div class="glimpse" style="background-image:url('instagram4.jpg')" onclick="openInstaLightbox(3)"></div>
+      <div class="glimpse" style="background-image:url('instagram5.jpg')" onclick="openInstaLightbox(4)"></div>
+      <div class="glimpse" style="background-image:url('instagram6.jpg')" onclick="openInstaLightbox(5)"></div>
+    </div>
+
+    <a href="https://instagram.com/kalaakar_jpg" target="_blank" class="follow-btn">
+      Follow @kalaakar_jpg
+    </a>
+  </section>
+
+  <!-- ===== LIGHTBOX FOR ALBUMS ===== -->
+  <div id="albumLightbox" class="lightbox">
+    <span class="close-btn" onclick="closeAlbum()">×</span>
+    <img id="albumImg" src="" alt="Album Image">
+    <span class="prev" onclick="changeAlbumImage(-1)">&#10094;</span>
+    <span class="next" onclick="changeAlbumImage(1)">&#10095;</span>
+    <div id="albumCaption" class="caption"></div>
   </div>
 
-  <a href="https://instagram.com/kalaakar_jpg" target="_blank" class="follow-btn">
-    Follow @kalaakar_jpg
-  </a>
-</section>
-
-<!-- LIGHTBOX (shared for Instagram images) -->
-<div id="instaLightbox" class="lightbox">
-  <span class="close-btn" onclick="closeInstaLightbox()">×</span>
-  <img id="instaLightboxImg" src="">
-  <span class="prev" onclick="changeInstaImage(-1)">&#10094;</span>
-  <span class="next" onclick="changeInstaImage(1)">&#10095;</span>
-</div>
-
-
-  <!-- LIGHTBOX -->
-  <div id="lightbox" class="lightbox">
-    <span class="close-btn" onclick="closeLightbox()">×</span>
-    <img id="lightboxImg" src="">
-    <span class="prev" onclick="changeImage(-1)">&#10094;</span>
-    <span class="next" onclick="changeImage(1)">&#10095;</span>
+  <!-- ===== LIGHTBOX FOR GLIMPSES ===== -->
+  <div id="instaLightbox" class="lightbox">
+    <span class="close-btn" onclick="closeInstaLightbox()">×</span>
+    <img id="instaLightboxImg" src="" alt="Glimpse Image">
+    <span class="prev" onclick="changeInstaImage(-1)">&#10094;</span>
+    <span class="next" onclick="changeInstaImage(1)">&#10095;</span>
   </div>
+
+  <footer class="gallery-footer">
+    <p>© 2025 Raj Album. Crafted with ❤️ by Kalaakar JPG</p>
+  </footer>
 
   <script src="gallery.js"></script>
 </body>
