@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your Album – Raj Album</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #e8f7e4, #f9fff8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: "Inter", sans-serif;
+    }
+    .booking-form {
+      background: white;
+      padding: 40px 50px;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+    }
+    .booking-form h2 {
+      font-family: "Playfair Display", serif;
+      margin-bottom: 20px;
+      color: #1e3728;
+    }
+    .booking-form input, .booking-form textarea, .booking-form select {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 8px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+    .booking-form button {
+      width: 100%;
+      background: linear-gradient(135deg, #6ecb63, #4ba94f);
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 30px;
+      font-size: 17px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: 0.3s ease;
+    }
+    .booking-form button:hover {
+      background: linear-gradient(135deg, #5fb157, #398d3b);
+      transform: translateY(-2px);
+    }
+    .success-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.4s ease;
+}
+
+.success-content {
+  background: white;
+  color: #333;
+  padding: 40px 50px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  animation: popIn 0.4s ease;
+}
+
+.success-content h2 {
+  margin-bottom: 10px;
+  color: #2e4d32;
+}
+
+.success-content button {
+  margin-top: 20px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 8px;
+  background: #2e4d32;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.success-content button:hover {
+  background: #3e6b46;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+  </style>
+</head>
+<body>
+
+ <form class="booking-form" id="bookingForm">
+  <h2>Book Your Album</h2>
+
+  <input type="text" id="name" placeholder="Full Name" required />
+  <input type="email" id="email" placeholder="Email Address" required />
+  <input type="tel" id="phone" placeholder="Phone Number" required />
+
+  <select id="albumType" required>
+    <option value="">Select Album Type</option>
+    <option>Wedding Album</option>
+    <option>Engagement Album</option>
+    <option>Haldi / Mehendi Album</option>
+    <option>Event Album</option>
+  </select>
+
+  <textarea id="message" placeholder="Additional Details (optional)" rows="4"></textarea>
+
+  <button type="submit">Confirm Booking</button>
+</form>
+<!-- BOOKING SUCCESS POPUP -->
+<div id="successPopup" class="success-popup">
+  <div class="success-content">
+    <h2>🎉 Booking Confirmed!</h2>
+    <p>Thank you for your booking. We’ll contact you soon!</p>
+    <button onclick="closeSuccessPopup()">Close</button>
+  </div>
+</div>
+
+
+
+
+</body>
+</html>

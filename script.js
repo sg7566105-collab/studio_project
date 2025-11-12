@@ -7,6 +7,8 @@ let i = 0, j = 0;
 function typeLine1() {
   const line1 = document.querySelector(".line1");
   const icon = document.querySelector(".icon");
+  if (!line1 || !icon) return;
+
   line1.textContent = text1.slice(0, i++);
   if (i <= text1.length) setTimeout(typeLine1, 90);
   else {
@@ -18,6 +20,8 @@ function typeLine1() {
 function typeLine2() {
   const line2 = document.querySelector(".line2");
   const cursor = document.querySelector(".cursor");
+  if (!line2 || !cursor) return;
+
   line2.textContent = text2.slice(0, j++);
   if (j <= text2.length) setTimeout(typeLine2, 90);
   else cursor.style.display = "none";
@@ -29,15 +33,21 @@ document.addEventListener("DOMContentLoaded", typeLine1);
 // ==================== NAVBAR TOGGLE ====================
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
-menuToggle.addEventListener("click", () => navLinks.classList.toggle("show"));
-navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => navLinks.classList.remove("show")));
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener("click", () => navLinks.classList.toggle("show"));
+  navLinks.querySelectorAll("a").forEach(link =>
+    link.addEventListener("click", () => navLinks.classList.remove("show"))
+  );
+}
 
 
 // ==================== SMOOTH SCROLL ====================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", e => {
     e.preventDefault();
-    document.querySelector(anchor.getAttribute("href")).scrollIntoView({ behavior: "smooth" });
+    document.querySelector(anchor.getAttribute("href"))?.scrollIntoView({
+      behavior: "smooth"
+    });
   });
 });
 
@@ -47,28 +57,33 @@ const albumSlider = document.querySelector(".album-slider");
 const albumCards = document.querySelectorAll(".album-card");
 const albumDotsContainer = document.querySelector(".slider-dots");
 
-albumCards.forEach((_, i) => {
-  const dot = document.createElement("div");
-  dot.classList.add("dot");
-  if (i === 0) dot.classList.add("active");
-  albumDotsContainer.appendChild(dot);
-});
+if (albumSlider && albumCards.length) {
+  albumCards.forEach((_, i) => {
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    if (i === 0) dot.classList.add("active");
+    albumDotsContainer.appendChild(dot);
+  });
 
-const albumDots = document.querySelectorAll(".slider-dots .dot");
+  const albumDots = document.querySelectorAll(".slider-dots .dot");
 
-albumSlider.addEventListener("scroll", () => {
-  const cardWidth = albumCards[0].offsetWidth;
-  const activeIndex = Math.round(albumSlider.scrollLeft / cardWidth);
-  albumDots.forEach((dot, idx) => dot.classList.toggle("active", idx === activeIndex));
-});
+  albumSlider.addEventListener("scroll", () => {
+    const cardWidth = albumCards[0].offsetWidth;
+    const activeIndex = Math.round(albumSlider.scrollLeft / cardWidth);
+    albumDots.forEach((dot, idx) => dot.classList.toggle("active", idx === activeIndex));
+  });
 
-let albumIndex = 0;
-function autoAlbumSlide() {
-  albumIndex = (albumIndex + 1) % albumCards.length;
-  albumSlider.scrollTo({ left: albumCards[albumIndex].offsetLeft, behavior: "smooth" });
-  albumDots.forEach((d, idx) => d.classList.toggle("active", idx === albumIndex));
+  let albumIndex = 0;
+  function autoAlbumSlide() {
+    albumIndex = (albumIndex + 1) % albumCards.length;
+    albumSlider.scrollTo({
+      left: albumCards[albumIndex].offsetLeft,
+      behavior: "smooth"
+    });
+    albumDots.forEach((d, idx) => d.classList.toggle("active", idx === albumIndex));
+  }
+  setInterval(autoAlbumSlide, 4000);
 }
-setInterval(autoAlbumSlide, 4000);
 
 
 // ==================== LIGHTBOX SYSTEM ====================
@@ -76,34 +91,128 @@ const albumImages = ["m1.jpg", "m2.jpg", "m3.jpg", "m6.jpg"];
 let lightboxIndex = 0;
 
 function openLightbox(index) {
-  lightboxIndex = index;
   const lightbox = document.getElementById("lightbox");
   const img = document.getElementById("lightboxImg");
+  if (!lightbox || !img) return;
+
+  lightboxIndex = index;
   img.src = albumImages[index];
   lightbox.style.display = "flex";
 }
 
 function closeLightbox() {
-  document.getElementById("lightbox").style.display = "none";
+  const lightbox = document.getElementById("lightbox");
+  if (lightbox) lightbox.style.display = "none";
 }
 
 function changeImage(direction) {
   lightboxIndex = (lightboxIndex + direction + albumImages.length) % albumImages.length;
-  document.getElementById("lightboxImg").src = albumImages[lightboxIndex];
+  const img = document.getElementById("lightboxImg");
+  if (img) img.src = albumImages[lightboxIndex];
 }
 
-// Bind clicks on album cards
-albumCards.forEach((card, index) => card.addEventListener("click", () => openLightbox(index)));
+albumCards.forEach((card, index) =>
+  card.addEventListener("click", () => openLightbox(index))
+);
 
-// Escape key close
-document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeLightbox();
+});
 
-// Swipe on mobile
 let startX = 0;
 const lightbox = document.getElementById("lightbox");
-lightbox.addEventListener("touchstart", e => startX = e.touches[0].clientX);
-lightbox.addEventListener("touchend", e => {
-  const endX = e.changedTouches[0].clientX;
-  if (startX - endX > 50) changeImage(1);
-  else if (endX - startX > 50) changeImage(-1);
+if (lightbox) {
+  lightbox.addEventListener("touchstart", e => (startX = e.touches[0].clientX));
+  lightbox.addEventListener("touchend", e => {
+    const endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) changeImage(1);
+    else if (endX - startX > 50) changeImage(-1);
+  });
+}
+
+
+// ==================== POPUP ON PAGE LOAD ====================
+window.addEventListener("load", () => {
+  const popup = document.getElementById("popup");
+  if (!popup) return;
+  const shownBefore = sessionStorage.getItem("popupShown");
+
+  if (!shownBefore) {
+    setTimeout(() => {
+      popup.style.display = "flex";
+      sessionStorage.setItem("popupShown", "true");
+    }, 1500);
+  }
 });
+
+function closePopup() {
+  const popup = document.getElementById("popup");
+  if (popup) popup.style.display = "none";
+}
+
+document.addEventListener("click", e => {
+  const popup = document.getElementById("popup");
+  if (e.target === popup) closePopup();
+});
+
+
+// ==================== BOOKING FORM HANDLER ====================
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("bookingForm");
+  if (!form) return;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const albumType = document.getElementById("albumType").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !email || !phone || !albumType) {
+      alert("Please fill all required fields.");
+      return;
+    }
+
+    // ---------- WhatsApp Integration ----------
+    const whatsappNumber = "919118602187"; // your WhatsApp number
+    const whatsappMessage = encodeURIComponent(
+      `📸 *New Album Booking Request!*\n\n` +
+      `👤 Name: ${name}\n📧 Email: ${email}\n📞 Phone: ${phone}\n💽 Album Type: ${albumType}\n💬 Message: ${message || "N/A"}`
+    );
+
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+    window.open(whatsappURL, "_blank");
+
+    // ---------- Email Integration ----------
+    const subject = encodeURIComponent("New Album Booking Request");
+    const emailBody = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAlbum Type: ${albumType}\nMessage: ${message}`
+    );
+
+    const emailTo = "rg4116551@gmail.com"; // your email
+    const mailtoLink = `mailto:${emailTo}?subject=${subject}&body=${emailBody}`;
+    window.open(mailtoLink, "_blank");
+
+    // ---------- Show Success Popup ----------
+    showSuccessPopup();
+  });
+});
+
+function showSuccessPopup() {
+  const popup = document.getElementById("successPopup");
+  if (popup) {
+    popup.style.display = "flex";
+    popup.style.opacity = "1";
+    setTimeout(() => closeSuccessPopup(), 5000);
+  }
+}
+
+function closeSuccessPopup() {
+  const popup = document.getElementById("successPopup");
+  if (popup) {
+    popup.style.opacity = "0";
+    setTimeout(() => (popup.style.display = "none"), 300);
+  }
+}
