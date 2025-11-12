@@ -1,69 +1,72 @@
-const galleryImages = document.querySelectorAll(".gallery-item img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImg");
-const dotsContainer = document.getElementById("dotsContainer");
-
+// ===== LIGHTBOX =====
+const images = ["m1.jpg", "m2.jpg", "m3.jpg", "m6.jpg"];
 let currentIndex = 0;
 
-// Open image
-galleryImages.forEach((img, i) => {
-  img.addEventListener("click", () => {
-    openLightbox(i);
-  });
-});
-
-function openLightbox(index) {
-  currentIndex = index;
-  lightbox.classList.add("active");
-  updateLightbox();
-  createDots();
+function openLightbox(i) {
+  currentIndex = i;
+  const img = document.getElementById("lightboxImg");
+  img.src = images[i];
+  document.getElementById("lightbox").style.display = "flex";
 }
 
 function closeLightbox() {
-  lightbox.classList.remove("active");
+  document.getElementById("lightbox").style.display = "none";
 }
 
 function changeImage(dir) {
-  currentIndex = (currentIndex + dir + galleryImages.length) % galleryImages.length;
-  updateLightbox();
+  currentIndex = (currentIndex + dir + images.length) % images.length;
+  document.getElementById("lightboxImg").src = images[currentIndex];
 }
 
-function updateLightbox() {
-  lightboxImg.src = galleryImages[currentIndex].src;
-  updateDots();
-}
+// ===== SECTION TOGGLE =====
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
 
-// Create dots
-function createDots() {
-  dotsContainer.innerHTML = "";
-  galleryImages.forEach((_, i) => {
-    const dot = document.createElement("div");
-    dot.classList.add("dot");
-    if (i === currentIndex) dot.classList.add("active");
-    dot.addEventListener("click", () => {
-      currentIndex = i;
-      updateLightbox();
-    });
-    dotsContainer.appendChild(dot);
+    document.querySelectorAll(".gallery-section").forEach(sec => sec.classList.remove("visible"));
+    document.getElementById(btn.dataset.target).classList.add("visible");
   });
-}
-
-function updateDots() {
-  document.querySelectorAll(".dot").forEach((dot, i) => {
-    dot.classList.toggle("active", i === currentIndex);
-  });
-}
-
-// Swipe (mobile)
-let startX = 0;
-lightbox.addEventListener("touchstart", e => startX = e.touches[0].clientX);
-lightbox.addEventListener("touchend", e => {
-  const endX = e.changedTouches[0].clientX;
-  if (startX - endX > 50) changeImage(1);
-  else if (endX - startX > 50) changeImage(-1);
 });
+// ==================== INSTAGRAM LIGHTBOX ====================
+const instaImages = [
+  "instagram1.jpg", "instagram2.jpg", "instagram3.jpg",
+  "instagram4.jpg", "instagram5.jpg", "instagram1.jpg"
+];
+let instaIndex = 0;
 
-// Escape key
+function openInstaLightbox(i) {
+  instaIndex = i;
+  const lightbox = document.getElementById("instaLightbox");
+  const img = document.getElementById("instaLightboxImg");
+  img.src = instaImages[i];
+  lightbox.style.display = "flex";
+}
+
+function closeInstaLightbox() {
+  document.getElementById("instaLightbox").style.display = "none";
+}
+
+function changeInstaImage(dir) {
+  instaIndex = (instaIndex + dir + instaImages.length) % instaImages.length;
+  document.getElementById("instaLightboxImg").src = instaImages[instaIndex];
+}
+
+// Close with Escape key
 document.addEventListener("keydown", e => {
-  if (e.key === "Escape") closeLightbox();
+  if (e.key === "Escape") closeInstaLightbox();
 });
+
+// Swipe on mobile
+let startX = 0;
+const instaLightbox = document.getElementById("instaLightbox");
+
+instaLightbox.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+instaLightbox.addEventListener("touchend", e => {
+  const endX = e.changedTouches[0].clientX;
+  if (startX - endX > 50) changeInstaImage(1); // swipe left
+  else if (endX - startX > 50) changeInstaImage(-1); // swipe right
+});
+

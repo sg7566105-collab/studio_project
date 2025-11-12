@@ -114,12 +114,25 @@ html, body {
   opacity: 0;
   transition: 0.3s ease;
 }
-.line1, .line2 {
+
+.line1 {
   display: inline-block;
+  animation: fadeIn 1.2s ease forwards;
 }
-.cursor {
-  animation: blink 0.7s steps(1) infinite;
-  margin-left: 5px;
+
+.icon {
+  font-size: 60px;
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+/* Second line: Memories (slightly indented) */
+.line2 {
+  display: block;
+  margin-top: 5px;
+  margin-left: 200px;
+  color: #eaffdd;
+  animation: fadeIn 1.8s ease forwards;
 }
 @keyframes blink {
   0%, 100% { opacity: 0; }
