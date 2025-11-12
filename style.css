@@ -87,7 +87,7 @@ html, body {
 .hero {
   height: 92vh;
   background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
-              url('b1.jpg') center center / cover no-repeat;
+              url('bb1.jpg') center center / cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
