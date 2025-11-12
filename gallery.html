@@ -1,45 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Album Gallery – Raj Album</title>
-    <link rel="stylesheet" href="gallery.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Album Gallery – Raj Album</title>
+  <link rel="stylesheet" href="gallery.css">
 </head>
-
 <body>
 
 <section class="gallery-section">
+  <h1 class="gallery-title">Album Gallery</h1>
 
-    <h1 class="gallery-title">Album Gallery</h1>
-
-    <div class="gallery-grid">
-
-        <div class="gallery-item" style="background-image:url('image1.jpg')" onclick="openImage('image1.jpg')"></div>
-        <div class="gallery-item" style="background-image:url('image2.jpg')" onclick="openImage('image2.jpg')"></div>
-        <div class="gallery-item" style="background-image:url('image3.jpg')" onclick="openImage('image3.jpg')"></div>
-        <div class="gallery-item" style="background-image:url('image4.jpg')" onclick="openImage('image4.jpg')"></div>
-
-        <!-- Yaha aur images add kar sakte ho -->
-    </div>
-
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="m1.jpg" alt=""></div>
+    <div class="gallery-item"><img src="m2.jpg" alt=""></div>
+    <div class="gallery-item"><img src="m3.jpg" alt=""></div>
+    <div class="gallery-item"><img src="image1.jpg" alt=""></div>
+    <div class="gallery-item"><img src="image2.jpg" alt=""></div>
+    <div class="gallery-item"><img src="m6.jpg" alt=""></div>
+  </div>
 </section>
 
-<!-- POPUP FULL IMAGE -->
-<div id="imgModal" class="modal" onclick="closeImage()">
-    <img id="modalImage" class="modal-content">
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="close-btn" onclick="closeLightbox()">×</span>
+  <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+  <img id="lightboxImg" src="">
+  <span class="next" onclick="changeImage(1)">&#10095;</span>
+  <div class="slider-dots" id="dotsContainer"></div>
 </div>
 
-<script>
-function openImage(src) {
-    document.getElementById("imgModal").style.display = "flex";
-    document.getElementById("modalImage").src = src;
-}
-
-function closeImage() {
-    document.getElementById("imgModal").style.display = "none";
-}
-</script>
-
+<script src="gallery.js"></script>
 </body>
 </html>
