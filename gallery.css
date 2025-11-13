@@ -23,7 +23,7 @@ h1, h2, h3 {
 .gallery-hero h1 {
   
   font-size: 44px;
-  color: #eaecea;
+  color: #fff177;
   letter-spacing: 1px;
   margin-bottom: 8px;
 }
@@ -48,7 +48,7 @@ h1, h2, h3 {
   border-radius: 30px;
   font-size: 16px;
   font-weight: 500;
-  color: #184128;
+  color: #000000;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -59,7 +59,7 @@ h1, h2, h3 {
 }
 
 .tab-btn.active {
-  background: #2e693b;
+  background:rgb(104, 19, 19);
   color: #fff;
   border-color: #2e693b;
   transform: translateY(-2px);
