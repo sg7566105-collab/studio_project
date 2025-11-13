@@ -1,10 +1,3 @@
-/* BOOKING PAGE STYLES (book.css)
-   - premium left image (desktop only)
-   - floating input labels
-   - classy back-to-home link
-   - animated checkmark popup
-   - mobile layout preserved (image hidden)
-*/
 
 /* ----- base ----- */
 :root{
@@ -20,7 +13,6 @@
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial}
 
-/* page background & positioning (slightly above center) */
 body {
   min-height:100vh;
   background: linear-gradient(135deg, var(--studio-cream), #ece8df);
@@ -31,7 +23,7 @@ body {
   color:var(--accent-dark);
 }
 
-/* back link (top-left, subtle) */
+
 .back-link{
   position:fixed;
   left:20px;
@@ -48,7 +40,7 @@ body {
 }
 .back-link:hover{transform:translateY(-2px);color:var(--accent-dark)}
 
-/* main layout: image + panel */
+
 .booking-page{
   width:100%;
   max-width:1100px;
@@ -58,7 +50,7 @@ body {
   justify-content:center;
 }
 
-/* left image (desktop only) */
+
 .booking-image{
   flex:0 0 46%;
   display:block;
