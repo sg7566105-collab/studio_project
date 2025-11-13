@@ -149,18 +149,11 @@ function closePopup() {
   if (popup) popup.style.display = "none";
 }
 
-document.addEventListener("click", e => {
-  const popup = document.getElementById("popup");
-  if (e.target === popup) closePopup();
-});
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("bookingForm");
   if (!form) return;
 
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const name = document.getElementById("name").value.trim();
@@ -174,28 +167,46 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    
-    const whatsappNumber = "919118602187"; 
+    // 🔥 Google Apps Script URL (Your backend)
+    const scriptURL = "https://script.google.com/macros/s/AKfycbx5Y8JBkHLajV1uIjtqxD-dfQJ8xwlseO8ksSGKTxFlXM3VULZIExl5J3q4tgMJB_c/exec";
+
+    try {
+      // 🔥 SEND DATA TO GOOGLE SHEET
+      await fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          albumType,
+          message
+        })
+      });
+    } catch (error) {
+      alert("Error saving data. Check script URL.");
+      return;
+    }
+
+    // 🔥 WhatsApp Message
+    const whatsappNumber = "919118602187";
     const whatsappMessage = encodeURIComponent(
       `📸 *New Album Booking Request!*\n\n` +
       `👤 Name: ${name}\n📧 Email: ${email}\n📞 Phone: ${phone}\n💽 Album Type: ${albumType}\n💬 Message: ${message || "N/A"}`
     );
+    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
 
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-    window.open(whatsappURL, "_blank");
-
-   
+    // 🔥 Email Message
     const subject = encodeURIComponent("New Album Booking Request");
     const emailBody = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAlbum Type: ${albumType}\nMessage: ${message}`
     );
+    const emailTo = "rg4116551@gmail.com";
+    window.open(`mailto:${emailTo}?subject=${subject}&body=${emailBody}`, "_blank");
 
-    const emailTo = "rg4116551@gmail.com"; 
-    const mailtoLink = `mailto:${emailTo}?subject=${subject}&body=${emailBody}`;
-    window.open(mailtoLink, "_blank");
-
-    
+    // 🔥 Success Popup
     showSuccessPopup();
+
+    form.reset();
   });
 });
 
