@@ -5,7 +5,7 @@
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background: #f7f5f2;
+  background: #F5F2EA;
 }
 h1, h2, h3 {
   font-family: "Playfair Display", serif;
@@ -26,7 +26,7 @@ html, body {
   justify-content: space-between;
   align-items: center;
   padding: 18px 50px;
-  background: rgba(255, 255, 255, 0.8);
+  background: #E8F1E6;
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   position: fixed;
@@ -176,7 +176,7 @@ html, body {
 .albums {
   padding: 40px 0 70px; /* reduced top/bottom gap */
   text-align: center;
-  background: linear-gradient(180deg, #e2e2e2 0%, #ffffff 100%);
+  background: #F5F2EA;
   overflow: hidden;
 }
 
@@ -208,13 +208,20 @@ html, body {
 
 /* IMAGE CARDS */
 .album-card {
-  flex: 0 0 85vw;
-  border-radius: 18px;
+  flex: 0 0 70vw;
+  border-radius: 10px;
   overflow: hidden;
   scroll-snap-align: center;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  background: #ebebeb;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.04);
+
+
+  background:  #f7f5f2;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .album-card img {
@@ -222,11 +229,28 @@ html, body {
   height: 100%;
   display: block;
   object-fit: cover; /* removes top-bottom white space */
+  
+  filter: brightness(0.97);
+  transition: 0.3s ease;
 }
 
 .album-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 14px 35px rgba(0,0,0,0.2);
+ box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+transform: translateY(-3px);
+
+
+}
+.album-title {
+  font-size: 16px;
+  color: #333;
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+  font-weight: 500;
+}
+
+.album-card:hover img {
+  filter: brightness(1);
 }
 
 /* DOTS */
@@ -239,12 +263,12 @@ html, body {
 .dot {
   width: 10px;
   height: 10px;
-  background: #aaa;
+  background: rgb(rgb(22, 22, 22), rgb(16, 16, 16), rgb(0, 0, 0));
   border-radius: 50%;
   transition: 0.3s;
 }
 .dot.active {
-  background: #333;
+  background: #1b1b1b;
   transform: scale(1.2);
 }
 
@@ -288,7 +312,7 @@ html, body {
 /* ===== ABOUT SECTION ===== */
 .about-section {
   padding: 120px 40px;
-  background:  linear-gradient(#d6d8d6, #f6faf4));
+  background:  #F5F2EA;
   backdrop-filter: blur(8px);
 }
 .about-container {
@@ -298,9 +322,13 @@ html, body {
   gap: 50px;
   align-items: center;
   padding: 60px;
-  border-radius: 28px;
-  background: rgba(234, 234, 234, 0.973);
+  border-radius: 18px;
+  background: #f7f5f2);
   box-shadow: 0 18px 45px rgba(0,0,0,0.1);
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
 }
 .about-image {
   width: 90%;
@@ -369,7 +397,7 @@ html, body {
 .contact-section {
   padding: 120px 40px;
   text-align: center;
-  background: linear-gradient(#fbfbfb, #ffffff);
+  background: #F5F2EA;
 }
 .contact-title {
   font-size: 38px;
@@ -454,7 +482,7 @@ html, body {
   width: 100%;
   text-align: center;
   padding: 18px 0;
-  background: #ffffff;
+  background:#F5F2EA;
   border-top: 1px solid rgba(255,255,255,0.35);
   font-size: 15px;
   color: #333;
@@ -542,7 +570,7 @@ html, body {
 }
 
 .popup-content {
-  background: #ffffffee;
+  background:#F5F2EA;
   padding: 40px 60px;
   border-radius: 20px;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
@@ -569,15 +597,15 @@ html, body {
 .popup-btn {
   display: inline-block;
   padding: 12px 40px;
-  background: linear-gradient(135deg, #b5f5a3, #6ecb63);
+  background: #E8F1E6;
   border: none;
   border-radius: 35px;
-  color: #fff;
+  color: #0a0909;
   font-size: 18px;
   text-decoration: none;
   font-weight: 600;
   transition: 0.3s ease;
-  box-shadow: 0 6px 18px rgba(110, 203, 99, 0.4);
+  box-shadow: 0 6px 18px rgba(108, 109, 107, 0.4);
 }
 .popup-btn:hover {
   transform: translateY(-3px);
