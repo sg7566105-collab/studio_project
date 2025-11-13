@@ -18,50 +18,56 @@
     wedding: {
       title: "Wedding Moments",
       images: [
-        "image1.jpg",
-        "image2.jpg",
-        "image3.jpg",
-        "image4.jpg"
+        "w (1).jpg",
+        "w (2).jpg",
+        "w (3).jpg",
+        "w (4).jpg"
       ]
     },
     prewedding: {
       title: "Pre-Wedding",
       images: [
-        "albums/prewedding/1.jpg",
-        "albums/prewedding/2.jpg",
-        "albums/prewedding/3.jpg"
+        "p.jpg",
+        "p (1).jpg",
+        "p (2).jpg",
+        "p (3).jpg",
+        "p (4).jpg"
       ]
     },
     engagement: {
       title: "Engagement",
       images: [
-        "albums/engagement/1.jpg",
-        "albums/engagement/2.jpg",
-        "albums/engagement/3.jpg"
+        "e (1).jpg",
+        "e (2).jpg",
+        "e (3).jpg"
       ]
     },
     haldi: {
       title: "Haldi Ceremony",
       images: [
-        "albums/haldi/1.jpg",
-        "albums/haldi/2.jpg",
-        "albums/haldi/3.jpg"
+        "h (1).jpg",
+        "h (2).jpg",
+        "h (3).jpg",
+        "h (4).jpg",
+        "h (5).jpg"
       ]
     },
     couple: {          // FIXED wrong key: "babyshoot" → "couple"
       title: "Couple Album",
       images: [
-        "albums/couple/1.jpg",
-        "albums/couple/2.jpg",
-        "albums/couple/3.jpg"
+        "c (1).jpg",
+        "c (2).jpg",
+        "c (3).jpg",
+        "c (4).jpg"
       ]
     },
     birthday: {
       title: "Birthday Events",
       images: [
-        "albums/birthday/1.jpg",
-        "albums/birthday/2.jpg",
-        "albums/birthday/3.jpg"
+        "b (1).jpg",
+        "b (2).jpg",
+        "b (3).jpg",
+        "b (4).jpg"
       ]
     }
   };
