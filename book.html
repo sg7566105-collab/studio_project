@@ -1,148 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Book Your Album – Raj Album</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      background: linear-gradient(135deg, #e8f7e4, #f9fff8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: "Inter", sans-serif;
-    }
-    .booking-form {
-      background: white;
-      padding: 40px 50px;
-      border-radius: 20px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-      max-width: 450px;
-      width: 100%;
-      text-align: center;
-    }
-    .booking-form h2 {
-      font-family: "Playfair Display", serif;
-      margin-bottom: 20px;
-      color: #1e3728;
-    }
-    .booking-form input, .booking-form textarea, .booking-form select {
-      width: 100%;
-      padding: 12px 15px;
-      margin: 8px 0;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      font-size: 15px;
-    }
-    .booking-form button {
-      width: 100%;
-      background: linear-gradient(135deg, #6ecb63, #4ba94f);
-      color: white;
-      padding: 14px;
-      border: none;
-      border-radius: 30px;
-      font-size: 17px;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: 0.3s ease;
-    }
-    .booking-form button:hover {
-      background: linear-gradient(135deg, #5fb157, #398d3b);
-      transform: translateY(-2px);
-    }
-    .success-popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.75);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  animation: fadeIn 0.4s ease;
-}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Raj Album Studio — Booking</title>
 
-.success-content {
-  background: white;
-  color: #333;
-  padding: 40px 50px;
-  border-radius: 18px;
-  text-align: center;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-  animation: popIn 0.4s ease;
-}
+  <!-- Use your project stylesheet for global rules; this is specific page stylesheet -->
+  <link rel="stylesheet" href="book.css">
 
-.success-content h2 {
-  margin-bottom: 10px;
-  color: #2e4d32;
-}
-
-.success-content button {
-  margin-top: 20px;
-  padding: 10px 25px;
-  border: none;
-  border-radius: 8px;
-  background: #2e4d32;
-  color: #fff;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.success-content button:hover {
-  background: #3e6b46;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes popIn {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-  </style>
+  <!-- keep your existing JS that handles bookings and success popup -->
+  <script defer src="script.js"></script>
 </head>
 <body>
 
- <form class="booking-form" id="bookingForm">
-  <h2>Book Your Album</h2>
+  <!-- Back / Home button (premium, small) -->
+  <a class="back-link" href="index.html" aria-label="Back to home">
+    ← Back to Home
+  </a>
 
-  <input type="text" id="name" placeholder="Full Name" required />
-  <input type="email" id="email" placeholder="Email Address" required />
-  <input type="tel" id="phone" placeholder="Phone Number" required />
+  <main class="booking-page">
 
-  <select id="albumType" required>
-    <option value="">Select Album Type</option>
-    <option>Wedding Album</option>
-    <option>Engagement Album</option>
-    <option>Haldi / Mehendi Album</option>
-    <option>Couple Album</option>
-     <option>Birthday Album</option>
-  </select>
+    <!-- Left image (desktop only) -->
+    <figure class="booking-image" aria-hidden="true">
+      <img src="m1.jpg" alt="Bride and groom portrait" />
+    </figure>
 
-  <textarea id="message" placeholder="Additional Details (optional)" rows="4"></textarea>
+    <!-- Form card -->
+    <section class="booking-panel">
+      <header class="booking-header">
+        <p class="studio-name">Raj Album Studio</p>
+        <h1 class="booking-title">Booking</h1>
+        <p class="booking-sub">Tell us about your event — we'll craft your perfect album.</p>
+      </header>
 
-  <button type="submit">Confirm Booking</button>
-</form>
-<!-- BOOKING SUCCESS POPUP -->
-<div id="successPopup" class="success-popup">
-  <div class="success-content">
-    <h2>🎉 Booking Confirmed!</h2>
-    <p>Thank you for your booking. We’ll contact you soon!</p>
-    <button onclick="closeSuccessPopup()">Close</button>
+      <!-- Form uses visible labels that float on focus (floating label style) -->
+      <form id="bookingForm" class="booking-form" novalidate>
+        <div class="field">
+          <input id="name" name="name" type="text" required autocomplete="name" />
+          <label for="name">Full name</label>
+        </div>
+
+        <div class="field">
+          <input id="email" name="email" type="email" required autocomplete="email" />
+          <label for="email">Email address</label>
+        </div>
+
+        <div class="field">
+          <input id="phone" name="phone" type="tel" required autocomplete="tel" />
+          <label for="phone">Phone number</label>
+        </div>
+
+        <div class="field select-field">
+          <select id="albumType" name="albumType" required>
+            <option value="" disabled selected>Select album type</option>
+            <option>Wedding Album</option>
+            <option>Engagement Album</option>
+            <option>Haldi / Mehendi Album</option>
+            <option>Couple Album</option>
+            <option>Birthday Album</option>
+          </select>
+          <label for="albumType">Album type</label>
+        </div>
+
+        <div class="field">
+          <textarea id="message" name="message" rows="4" placeholder=" "></textarea>
+          <label for="message">Additional details (optional)</label>
+        </div>
+
+        <button type="submit" class="cta">Confirm booking</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Success popup with animated green check -->
+  <div id="successPopup" class="success-popup" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="success-content">
+      <div class="check-wrap" aria-hidden="true">
+        <!-- SVG check that animates when popup becomes visible -->
+        <svg class="check" viewBox="0 0 52 52" width="72" height="72" aria-hidden="true">
+          <circle class="check-circle" cx="26" cy="26" r="25" fill="none"/>
+          <path class="check-mark" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
+      </div>
+
+      <h2>Booking Confirmed</h2>
+      <p>Thank you — we received your request. We'll contact you soon to confirm details.</p>
+      <div class="success-actions">
+        <button class="btn-close" onclick="closeSuccessPopup()">Close</button>
+        <a class="btn-home" href="index.html">Back to Home</a>
+      </div>
+    </div>
   </div>
-</div>
-<script src="script.js"></script>
-
-
-
-
 
 </body>
 </html>

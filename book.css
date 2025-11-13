@@ -1,0 +1,321 @@
+/* BOOKING PAGE STYLES (book.css)
+   - premium left image (desktop only)
+   - floating input labels
+   - classy back-to-home link
+   - animated checkmark popup
+   - mobile layout preserved (image hidden)
+*/
+
+/* ----- base ----- */
+:root{
+  --studio-cream: #f5f2ea;
+  --accent-dark: #1b3a28;
+  --accent-green-from: #5fb157;
+  --accent-green-to: #398d3b;
+  --muted: #7a7a7a;
+  --card: rgba(255,255,255,0.95);
+  --glass-border: rgba(0,0,0,0.06);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial}
+
+/* page background & positioning (slightly above center) */
+body {
+  min-height:100vh;
+  background: linear-gradient(135deg, var(--studio-cream), #ece8df);
+  display:flex;
+  align-items:flex-start; /* slightly above center */
+  justify-content:center;
+  padding:56px 20px;
+  color:var(--accent-dark);
+}
+
+/* back link (top-left, subtle) */
+.back-link{
+  position:fixed;
+  left:20px;
+  top:18px;
+  text-decoration:none;
+  color:var(--muted);
+  font-size:14px;
+  border-radius:8px;
+  padding:8px 10px;
+  transition:0.18s;
+  background:rgba(255,255,255,0.6);
+  border:1px solid var(--glass-border);
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+.back-link:hover{transform:translateY(-2px);color:var(--accent-dark)}
+
+/* main layout: image + panel */
+.booking-page{
+  width:100%;
+  max-width:1100px;
+  display:flex;
+  gap:28px;
+  align-items:stretch;
+  justify-content:center;
+}
+
+/* left image (desktop only) */
+.booking-image{
+  flex:0 0 46%;
+  display:block;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 18px 50px rgba(0,0,0,0.12);
+  border:1px solid var(--glass-border);
+    width: 50%;
+  height: 100%;
+  border-radius: 20px 0 0 20px;
+  overflow: hidden
+}
+.booking-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transform:scale(1.02);
+  transition:transform 6s ease; /* slow parallax-like */
+}
+.booking-image img:hover{transform:scale(1.03)}
+
+/* booking panel (form) */
+.booking-panel{
+  flex:0 0 42%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+/* header above form */
+.booking-header{
+  text-align:left;
+  margin-bottom:18px;
+}
+.studio-name{
+  font-size:13px;
+  color:var(--muted);
+  margin:0 0 6px 0;
+}
+.booking-title{
+  font-family:"Playfair Display",serif;
+  margin:0; font-size:30px; color:var(--accent-dark);
+}
+.booking-sub{
+  margin-top:8px;
+  color:#556b58;
+  font-size:14px;
+  line-height:1.35;
+}
+
+/* form card */
+.booking-form{
+  background:var(--card);
+  padding:32px;
+  border-radius:14px;
+  border:1px solid var(--glass-border);
+  box-shadow:0 20px 50px rgba(0,0,0,0.08);
+}
+
+/* field wrapper for floating label */
+.field{
+  position:relative;
+  margin:12px 0;
+}
+
+/* inputs / textarea / select base */
+.booking-form input[type="text"],
+.booking-form input[type="email"],
+.booking-form input[type="tel"],
+.booking-form textarea,
+.booking-form select{
+  width:100%;
+  padding:14px 14px 14px 14px;
+  border-radius:10px;
+  border:1px solid #e1e1e1;
+  background:#fbfbfb;
+  font-size:15px;
+  color:var(--accent-dark);
+  outline:none;
+  transition:all 0.18s ease;
+}
+
+/* remove native arrow look on select in some browsers */
+.booking-form select{appearance:none; -webkit-appearance:none; -moz-appearance:none; background-image: linear-gradient(45deg, transparent 50%, #999 50%), linear-gradient(135deg, #999 50%, transparent 50%); background-position: calc(100% - 18px) calc(1em + 2px), calc(100% - 13px) calc(1em + 2px); background-size: 6px 6px, 6px 6px; background-repeat:no-repeat; padding-right:40px}
+
+/* hide placeholder; we use floating label */
+.booking-form input::placeholder,
+.booking-form textarea::placeholder { color:transparent; }
+
+/* floating label */
+.field label{
+  position:absolute;
+  left:14px;
+  top:14px;
+  font-size:14px;
+  color:#8b8b8b;
+  pointer-events:none;
+  background:transparent;
+  transform-origin:left top;
+  transition:transform 0.18s ease, top 0.18s ease, font-size 0.18s ease, color 0.18s ease;
+}
+
+/* when input has value or focused -> float label up */
+.field input:focus + label,
+.field textarea:focus + label,
+.field select:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:not(:placeholder-shown) + label,
+.field select:not([value=""]) + label {
+  transform: translateY(-10px) scale(0.88);
+  top:6px;
+  font-size:12px;
+  color:var(--accent-green-from);
+}
+
+/* focus state */
+.booking-form input:focus,
+.booking-form textarea:focus,
+.booking-form select:focus{
+  border-color: var(--accent-green-from);
+  box-shadow: 0 6px 22px rgba(95,177,87,0.12);
+  background: #fff;
+}
+
+/* textarea specific */
+.booking-form textarea{ min-height:110px; resize:vertical; padding-top:16px; }
+
+/* submit CTA */
+.cta{
+  display:block;
+  width:100%;
+  padding:14px;
+  margin-top:8px;
+  border-radius:30px;
+  border:0;
+  color:#fff;
+  font-weight:600;
+  font-size:16px;
+  cursor:pointer;
+  background:linear-gradient(135deg,var(--accent-green-from),var(--accent-green-to));
+  box-shadow:0 12px 30px rgba(57,137,59,0.22);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.cta:hover{ transform: translateY(-3px); box-shadow:0 18px 40px rgba(57,137,59,0.28); }
+
+/* small helper */
+.booking-form .hint{font-size:13px;color:var(--muted);margin-top:6px}
+
+/* success popup (hidden by default). script.js will set display:block or flex */
+.success-popup{
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,0.48);
+  backdrop-filter: blur(3px);
+  z-index:9999;
+}
+
+/* popup card */
+.success-content{
+  background:var(--card);
+  padding:28px 30px;
+  border-radius:14px;
+  text-align:center;
+  border:1px solid var(--glass-border);
+  box-shadow:0 28px 70px rgba(0,0,0,0.18);
+  max-width:420px;
+  width:calc(100% - 40px);
+}
+
+/* animated check SVG container */
+.check-wrap{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-bottom:12px;
+}
+
+/* --- SVG animations --- */
+.check{
+  stroke: var(--accent-green-to);
+  stroke-width:3;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  fill:none;
+}
+
+/* circle path */
+.check-circle{
+  stroke-dasharray: 157;
+  stroke-dashoffset: 157;
+  stroke-width:3;
+  stroke: rgba(91,166,106,0.12);
+  transition: stroke-dashoffset 0.45s ease 0.05s;
+}
+
+/* check path */
+.check-mark{
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  stroke:var(--accent-green-to);
+  stroke-width:4;
+  transition: stroke-dashoffset 0.38s ease 0.45s;
+}
+
+/* when popup visible, animate lines — we'll rely on a class 'visible' applied by script or when element displayed */
+.success-popup.visible .check-circle{ stroke-dashoffset: 0; transition: stroke-dashoffset 0.45s cubic-bezier(.2,.9,.2,1) }
+.success-popup.visible .check-mark{ stroke-dashoffset: 0; transition: stroke-dashoffset 0.35s cubic-bezier(.2,.9,.2,1) }
+
+/* popup typography */
+.success-content h2{ margin:8px 0 6px; font-size:22px; color:var(--accent-dark) }
+.success-content p{ margin:0 0 14px; color:#4d5a4d; font-size:15px }
+
+/* popup actions */
+.success-actions{ display:flex; gap:12px; justify-content:center; align-items:center; margin-top:8px }
+.btn-close{
+  padding:10px 18px;
+  background:#fff;
+  border:1px solid var(--glass-border);
+  border-radius:10px;
+  cursor:pointer;
+  color:var(--accent-dark);
+  transition:0.18s;
+}
+.btn-close:hover{ transform:translateY(-2px); box-shadow:0 8px 22px rgba(0,0,0,0.06) }
+
+.btn-home{
+  padding:10px 18px;
+  background:linear-gradient(135deg,var(--accent-green-from),var(--accent-green-to));
+  color:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 10px 26px rgba(57,137,59,0.2);
+}
+
+/* responsive: mobile - hide left image, keep layout single column */
+@media (max-width: 900px){
+  .booking-page{ max-width:760px; gap:18px; padding:0 8px; }
+  .booking-image{ display:none; }
+  .booking-panel{ flex: 1 1 auto; }
+  .booking-panel .booking-header { text-align:center }
+  .booking-form{ padding:22px; border-radius:12px; }
+  .booking-title{ font-size:24px }
+  .back-link{ left:12px; top:10px; padding:6px 8px; font-size:13px }
+}
+
+/* keep mobile input sizes as earlier (so mobile feel unchanged) */
+@media (max-width: 768px){
+  .booking-form input,
+  .booking-form textarea,
+  .booking-form select{
+    padding:12px;
+    border-radius:14px; /* matches your previous mobile radius */
+  }
+  .cta{ padding:13px }
+}
