@@ -17,7 +17,7 @@ h1, h2, h3 {
   text-align: center;
   padding: 100px 20px 50px;
     background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
-              url('m1.jpg') center center / cover no-repeat;
+              url('g1.jpg') center center / cover no-repeat;
 }
 
 .gallery-hero h1 {
