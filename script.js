@@ -173,15 +173,17 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       // 🔥 SEND DATA TO GOOGLE SHEET
       await fetch(scriptURL, {
-        method: "POST",
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          albumType,
-          message
-        })
-      });
+  method: "POST",
+  mode: "no-cors",
+  body: JSON.stringify({
+    name,
+    email,
+    phone,
+    albumType,
+    message
+  })
+});
+
     } catch (error) {
       alert("Error saving data. Check script URL.");
       return;
