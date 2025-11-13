@@ -1,5 +1,5 @@
 
-/* ----- base ----- */
+
 :root{
   --studio-cream: #f5f2ea;
   --accent-dark: #1b3a28;
@@ -17,7 +17,7 @@ body {
   min-height:100vh;
   background: linear-gradient(135deg, var(--studio-cream), #ece8df);
   display:flex;
-  align-items:flex-start; /* slightly above center */
+  align-items:flex-start; 
   justify-content:center;
   padding:56px 20px;
   color:var(--accent-dark);
@@ -69,11 +69,11 @@ body {
   object-fit:cover;
   display:block;
   transform:scale(1.02);
-  transition:transform 6s ease; /* slow parallax-like */
+  transition:transform 6s ease; 
 }
 .booking-image img:hover{transform:scale(1.03)}
 
-/* booking panel (form) */
+
 .booking-panel{
   flex:0 0 42%;
   display:flex;
@@ -81,7 +81,7 @@ body {
   justify-content:center;
 }
 
-/* header above form */
+
 .booking-header{
   text-align:left;
   margin-bottom:18px;
@@ -102,7 +102,7 @@ body {
   line-height:1.35;
 }
 
-/* form card */
+
 .booking-form{
   background:var(--card);
   padding:32px;
@@ -111,13 +111,13 @@ body {
   box-shadow:0 20px 50px rgba(0,0,0,0.08);
 }
 
-/* field wrapper for floating label */
+
 .field{
   position:relative;
   margin:12px 0;
 }
 
-/* inputs / textarea / select base */
+
 .booking-form input[type="text"],
 .booking-form input[type="email"],
 .booking-form input[type="tel"],
@@ -134,14 +134,14 @@ body {
   transition:all 0.18s ease;
 }
 
-/* remove native arrow look on select in some browsers */
+
 .booking-form select{appearance:none; -webkit-appearance:none; -moz-appearance:none; background-image: linear-gradient(45deg, transparent 50%, #999 50%), linear-gradient(135deg, #999 50%, transparent 50%); background-position: calc(100% - 18px) calc(1em + 2px), calc(100% - 13px) calc(1em + 2px); background-size: 6px 6px, 6px 6px; background-repeat:no-repeat; padding-right:40px}
 
-/* hide placeholder; we use floating label */
+
 .booking-form input::placeholder,
 .booking-form textarea::placeholder { color:transparent; }
 
-/* floating label */
+
 .field label{
   position:absolute;
   left:14px;
@@ -154,7 +154,7 @@ body {
   transition:transform 0.18s ease, top 0.18s ease, font-size 0.18s ease, color 0.18s ease;
 }
 
-/* when input has value or focused -> float label up */
+
 .field input:focus + label,
 .field textarea:focus + label,
 .field select:focus + label,
@@ -167,7 +167,7 @@ body {
   color:var(--accent-green-from);
 }
 
-/* focus state */
+
 .booking-form input:focus,
 .booking-form textarea:focus,
 .booking-form select:focus{
@@ -176,10 +176,10 @@ body {
   background: #fff;
 }
 
-/* textarea specific */
+
 .booking-form textarea{ min-height:110px; resize:vertical; padding-top:16px; }
 
-/* submit CTA */
+
 .cta{
   display:block;
   width:100%;
@@ -197,10 +197,10 @@ body {
 }
 .cta:hover{ transform: translateY(-3px); box-shadow:0 18px 40px rgba(57,137,59,0.28); }
 
-/* small helper */
+
 .booking-form .hint{font-size:13px;color:var(--muted);margin-top:6px}
 
-/* success popup (hidden by default). script.js will set display:block or flex */
+
 .success-popup{
   position:fixed;
   inset:0;
@@ -212,7 +212,7 @@ body {
   z-index:9999;
 }
 
-/* popup card */
+
 .success-content{
   background:var(--card);
   padding:28px 30px;
@@ -224,7 +224,7 @@ body {
   width:calc(100% - 40px);
 }
 
-/* animated check SVG container */
+
 .check-wrap{
   display:flex;
   justify-content:center;
@@ -232,7 +232,7 @@ body {
   margin-bottom:12px;
 }
 
-/* --- SVG animations --- */
+
 .check{
   stroke: var(--accent-green-to);
   stroke-width:3;
@@ -241,7 +241,7 @@ body {
   fill:none;
 }
 
-/* circle path */
+
 .check-circle{
   stroke-dasharray: 157;
   stroke-dashoffset: 157;
@@ -250,7 +250,7 @@ body {
   transition: stroke-dashoffset 0.45s ease 0.05s;
 }
 
-/* check path */
+
 .check-mark{
   stroke-dasharray: 50;
   stroke-dashoffset: 50;
@@ -259,15 +259,15 @@ body {
   transition: stroke-dashoffset 0.38s ease 0.45s;
 }
 
-/* when popup visible, animate lines — we'll rely on a class 'visible' applied by script or when element displayed */
+
 .success-popup.visible .check-circle{ stroke-dashoffset: 0; transition: stroke-dashoffset 0.45s cubic-bezier(.2,.9,.2,1) }
 .success-popup.visible .check-mark{ stroke-dashoffset: 0; transition: stroke-dashoffset 0.35s cubic-bezier(.2,.9,.2,1) }
 
-/* popup typography */
+
 .success-content h2{ margin:8px 0 6px; font-size:22px; color:var(--accent-dark) }
 .success-content p{ margin:0 0 14px; color:#4d5a4d; font-size:15px }
 
-/* popup actions */
+
 .success-actions{ display:flex; gap:12px; justify-content:center; align-items:center; margin-top:8px }
 .btn-close{
   padding:10px 18px;
@@ -290,7 +290,7 @@ body {
   box-shadow:0 10px 26px rgba(57,137,59,0.2);
 }
 
-/* responsive: mobile - hide left image, keep layout single column */
+
 @media (max-width: 900px){
   .booking-page{ max-width:760px; gap:18px; padding:0 8px; }
   .booking-image{ display:none; }
@@ -301,13 +301,13 @@ body {
   .back-link{ left:12px; top:10px; padding:6px 8px; font-size:13px }
 }
 
-/* keep mobile input sizes as earlier (so mobile feel unchanged) */
+
 @media (max-width: 768px){
   .booking-form input,
   .booking-form textarea,
   .booking-form select{
     padding:12px;
-    border-radius:14px; /* matches your previous mobile radius */
+    border-radius:14px; 
   }
   .cta{ padding:13px }
 }

@@ -1,5 +1,5 @@
 (() => {
-  // ==================== SECTION TOGGLE ====================
+  
   const tabButtons = document.querySelectorAll(".tab-btn");
   const sections = document.querySelectorAll(".gallery-section");
 
@@ -13,7 +13,7 @@
     });
   });
 
-  // ==================== ALBUM COLLECTIONS ====================
+
   const albumCollections = {
     wedding: {
       title: "Wedding Moments",
@@ -52,7 +52,7 @@
         "h (5).jpg"
       ]
     },
-    couple: {          // FIXED wrong key: "babyshoot" → "couple"
+    couple: {          
       title: "Couple Album",
       images: [
         "c (1).jpg",
@@ -75,7 +75,7 @@
   let currentAlbum = null;
   let currentImageIndex = 0;
 
-  // ==================== OPEN ALBUM LIGHTBOX ====================
+  
   window.openAlbum = function(albumKey) {
     currentAlbum = albumCollections[albumKey];
     if (!currentAlbum) return;
@@ -91,12 +91,12 @@
     lightbox.style.display = "flex";
   };
 
-  // ==================== CLOSE ALBUM ====================
+  
   window.closeAlbum = function() {
     document.getElementById("albumLightbox").style.display = "none";
   };
 
-  // ==================== CHANGE ALBUM IMAGE ====================
+  
   window.changeAlbumImage = function(direction) {
     if (!currentAlbum) return;
 
@@ -114,7 +114,7 @@
     }, 180);
   };
 
-  // ==================== ESC CLOSE ====================
+  
   document.addEventListener("keydown", e => {
     if (e.key === "Escape") {
       closeAlbum();
@@ -122,7 +122,7 @@
     }
   });
 
-  // ==================== SWIPE HANDLER ====================
+  
   function enableSwipe(lightbox, onLeft, onRight) {
     let startX = 0;
 
@@ -133,8 +133,8 @@
     lightbox.addEventListener("touchend", e => {
       const endX = e.changedTouches[0].clientX;
 
-      if (startX - endX > 50) onLeft();      // left swipe
-      else if (endX - startX > 50) onRight(); // right swipe
+      if (startX - endX > 50) onLeft();      
+      else if (endX - startX > 50) onRight(); 
     });
   }
 
@@ -144,7 +144,7 @@
     () => changeAlbumImage(-1)
   );
 
-  // ==================== INSTAGRAM LIGHTBOX ====================
+  
   const instaImages = [
     "instagram1.jpg",
     "instagram2.jpg",

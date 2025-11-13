@@ -5,27 +5,27 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>RG album studio— Booking</title>
 
-  <!-- Use your project stylesheet for global rules; this is specific page stylesheet -->
+
   <link rel="stylesheet" href="book.css">
 
-  <!-- keep your existing JS that handles bookings and success popup -->
+  
   <script defer src="script.js"></script>
 </head>
 <body>
 
-  <!-- Back / Home button (premium, small) -->
+  
   <a class="back-link" href="index.html" aria-label="Back to home">
     ← Back to Home
   </a>
 
   <main class="booking-page">
 
-    <!-- Left image (desktop only) -->
+    
     <figure class="booking-image" aria-hidden="true">
       <img src="m1.jpg" alt="Bride and groom portrait" />
     </figure>
 
-    <!-- Form card -->
+  
     <section class="booking-panel">
       <header class="booking-header">
         <p class="studio-name">RG Album Studio</p>
@@ -33,7 +33,7 @@
         <p class="booking-sub">Tell us about your event — we'll craft your perfect album.</p>
       </header>
 
-      <!-- Form uses visible labels that float on focus (floating label style) -->
+      
       <form id="bookingForm" class="booking-form" novalidate>
         <div class="field">
           <input id="name" name="name" type="text" required autocomplete="name" />
@@ -74,11 +74,10 @@
     </section>
   </main>
 
-  <!-- Success popup with animated green check -->
   <div id="successPopup" class="success-popup" aria-hidden="true" role="dialog" aria-modal="true">
     <div class="success-content">
       <div class="check-wrap" aria-hidden="true">
-        <!-- SVG check that animates when popup becomes visible -->
+        
         <svg class="check" viewBox="0 0 52 52" width="72" height="72" aria-hidden="true">
           <circle class="check-circle" cx="26" cy="26" r="25" fill="none"/>
           <path class="check-mark" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>

@@ -1,4 +1,4 @@
-/* ====== BASE STYLES ====== */
+
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
@@ -11,7 +11,7 @@ h1, h2, h3 {
   font-family: "Playfair Display", serif;
 }
 
-/* ====== HERO SECTION ====== */
+
 .gallery-hero {
  
   text-align: center;
@@ -34,7 +34,7 @@ h1, h2, h3 {
   margin-bottom: 30px;
 }
 
-/* ====== TOGGLE BUTTONS ====== */
+
 .toggle-buttons {
   display: flex;
   justify-content: center;
@@ -65,7 +65,7 @@ h1, h2, h3 {
   transform: translateY(-2px);
 }
 
-/* ====== GALLERY SECTION BASE ====== */
+
 .gallery-section {
   display: none;
   opacity: 0;
@@ -87,7 +87,7 @@ h1, h2, h3 {
   color: #204a2c;
 }
 
-/* ====== ALBUM GRID ====== */
+
 .album-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -98,7 +98,7 @@ h1, h2, h3 {
 
 .album-card {
   background: #fff;
-  border-radius: 12px;   /* reduced from 18px for professional feel */
+  border-radius: 12px;   
   overflow: hidden;
   cursor: pointer;
   transition: 0.25s ease;
@@ -124,7 +124,7 @@ h1, h2, h3 {
   color: #20502c;
 }
 
-/* ====== GLIMPSE GRID ====== */
+
 .glimpse-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -147,7 +147,7 @@ h1, h2, h3 {
   transform: scale(1.05);
 }
 
-/* ====== FOLLOW BUTTON ====== */
+
 .follow-btn {
   display: inline-block;
   background: #2e693b;
@@ -166,7 +166,7 @@ h1, h2, h3 {
   background: #20582a;
 }
 
-/* ====== LIGHTBOX ====== */
+
 .lightbox {
   display: none;
   position: fixed;
@@ -196,7 +196,7 @@ h1, h2, h3 {
   to { opacity: 1; transform: scale(1); }
 }
 
-/* ====== LIGHTBOX CONTROLS ====== */
+
 .close-btn,
 .prev,
 .next {
@@ -231,7 +231,7 @@ h1, h2, h3 {
 .prev { left: 30px; }
 .next { right: 30px; }
 
-/* ====== CAPTION ====== */
+
 .caption {
   position: absolute;
   bottom: 30px;
@@ -245,7 +245,7 @@ h1, h2, h3 {
   border-radius: 20px;
 }
 
-/* ====== FOOTER ====== */
+
 .gallery-footer {
   text-align: center;
   padding: 18px 10px;
@@ -256,7 +256,7 @@ h1, h2, h3 {
   margin-top: 50px;
 }
 
-/* ====== RESPONSIVE DESIGN ====== */
+
 @media (max-width: 768px) {
   .gallery-hero {
     padding: 80px 15px 40px;

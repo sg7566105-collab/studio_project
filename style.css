@@ -1,27 +1,27 @@
-/* GOOGLE FONT */
+
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 
 :root {
-  --primary: #D4AF37;  /* Gold */
-  --secondary: #000000; /* Black (original) */
+  --primary: #D4AF37;  
+  --secondary: #000000; 
   --white: #ffffff;
   --dark: #222222;
   --light: #f5f5f5;
 
-  /* helper vars (added for consistent dark-hybrid look) */
+  
   --nav-bg: #b5b3b3;
-    /* KEPT AS-IS because you said navbar is perfect */
-  --body-bg: #111111;   /* soft dark body */
-  --card-bg: #1a1a1a;   /* cards / boxes */
+    
+  --body-bg: #111111;  
+  --card-bg: #1a1a1a;   
   --text-light: #f0f0f0;
   --text-muted: #bbbbbb;
 }
 
-/* ===== BASE ===== */
+
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background: var(--body-bg); /* changed from #F5F2EA */
+  background: var(--body-bg); 
   color: var(--text-light);
 }
 h1, h2, h3 {
@@ -36,9 +36,7 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/* ===== NAVBAR ===== */
-/* NOTE: I intentionally left navbar structure & colors as you had them,
-   because you said you adjusted it and don't want it changed. */
+
 .main-nav {
   width: 100%;
   height: 70px;
@@ -46,7 +44,7 @@ html, body {
   justify-content: space-between;
   align-items: center;
   padding: 18px 50px;
-  background: var(--nav-bg); /* kept as your value (#E8F1E6) */
+  background: var(--nav-bg); 
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   position: fixed;
@@ -66,7 +64,7 @@ html, body {
 }
 .nav-links a {
   text-decoration: none;
-  color: #000;  /* pure black — works best on your grey navbar */
+  color: #000;  
   font-size: 15px;
   transition: 0.3s;
 }
@@ -106,7 +104,7 @@ html, body {
   }
 }
 
-/* ===== HERO SECTION ===== */
+
 .hero {
   height: 100vh;
   background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)),
@@ -124,7 +122,7 @@ html, body {
   font-family: "Parisienne", cursive;
   font-size: 85px;
   font-weight: 400;
-  color: var(--primary); /* changed to gold */
+  color: var(--primary); 
   letter-spacing: 2px;
   line-height: 1.1;
   text-shadow: 0px 6px 28px rgba(0,0,0,0.75);
@@ -148,7 +146,7 @@ html, body {
   animation: fadeIn 1.5s ease forwards;
 }
 
-/* Second line: Memories (slightly indented) */
+
 .line2 {
   display: block;
   margin-top: 5px;
@@ -164,15 +162,15 @@ html, body {
   font-size: 18px;
   font-weight: 300;
   letter-spacing: 0.4px;
-  color: var(--text-light); /* refined */
+  color: var(--text-light); 
   text-shadow: 0px 3px 14px rgba(0,0,0,0.7);
 }
 .btn {
   display: inline-block;
   padding: 12px 34px;
-  border: none;                /* switched to solid button */
-  background: var(--primary);  /* gold */
-  color: var(--secondary);     /* black text on gold */
+  border: none;                
+  background: var(--primary);  
+  color: var(--secondary);     
   border-radius: 30px;
   font-size: 14px;
   letter-spacing: 1.2px;
@@ -194,18 +192,18 @@ html, body {
   }
 }
 
-/* ===== ALBUM SECTION ===== */
+
 .albums {
-  padding: 80px 0; /* reduced top/bottom gap */
+  padding: 80px 0; 
   text-align: center;
-  background: var(--body-bg); /* replaced from #F5F2EA */
+  background: var(--body-bg); 
   overflow: hidden;
 }
 
 .albums h2 {
   font-size: 32px;
   margin-bottom: 25px;
-  color: var(--primary); /* replaced #1b3a28 with gold */
+  color: var(--primary); 
   font-family: "Playfair Display", serif;
 }
 
@@ -217,7 +215,7 @@ html, body {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   justify-content: center;
-  align-items: center; /* removes top/bottom space inside slider */
+  align-items: center; 
 }
 .album-slider::-webkit-scrollbar {
   display: none;
@@ -228,7 +226,7 @@ html, body {
   scroll-snap-align: start;
 }
 
-/* IMAGE CARDS */
+
 .album-card {
   flex: 0 0 70vw;
   border-radius: 10px;
@@ -236,7 +234,7 @@ html, body {
   scroll-snap-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   border: 1px solid rgba(0,0,0,0.04);
-  background: var(--card-bg); /* replaced #f7f5f2 */
+  background: var(--card-bg); 
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -248,7 +246,7 @@ html, body {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover; /* removes top-bottom white space */
+  object-fit: cover; 
   filter: brightness(0.97);
   transition: 0.3s ease;
 }
@@ -259,7 +257,7 @@ html, body {
 }
 .album-title {
   font-size: 16px;
-  color: var(--text-light); /* made title readable on dark card */
+  color: var(--text-light); 
   padding: 10px;
   margin: 0;
   text-align: center;
@@ -270,7 +268,7 @@ html, body {
   filter: brightness(1);
 }
 
-/* DOTS */
+
 .slider-dots {
   display: flex;
   justify-content: center;
@@ -280,16 +278,16 @@ html, body {
 .dot {
   width: 10px;
   height: 10px;
-  background: var(--text-muted); /* inactive dot */
+  background: var(--text-muted); 
   border-radius: 50%;
   transition: 0.3s;
 }
 .dot.active {
-  background: var(--primary); /* active dot gold */
+  background: var(--primary); 
   transform: scale(1.2);
 }
 
-/* BUTTON */
+
 .album-view-more {
   display: inline-block;
   margin-top: 25px;
@@ -308,7 +306,7 @@ html, body {
   transform: translateY(-3px);
 }
 
-/* MOBILE OPTIMIZATION */
+
 @media (max-width: 768px) {
   .albums {
     padding: 40px 0 60px;
@@ -326,10 +324,10 @@ html, body {
 }
 
 
-/* ===== ABOUT SECTION ===== */
+
 .about-section {
   padding: 80px 40px;
-  background: var(--body-bg); /* replaced #F5F2EA */
+  background: var(--body-bg); 
   backdrop-filter: blur(8px);
 }
 .about-container {
@@ -340,7 +338,7 @@ html, body {
   align-items: center;
   padding: 60px;
   border-radius: 18px;
-  background: var(--card-bg); /* fixed and removed syntax error */
+  background: var(--card-bg); 
   box-shadow: 0 18px 45px rgba(0,0,0,0.1);
   -webkit-border-radius: 18px;
   -moz-border-radius: 18px;
@@ -362,14 +360,14 @@ html, body {
 .about-content h2 {
   font-size: 42px;
   margin-bottom: 18px;
-  color: var(--primary); /* changed from #222 */
+  color: var(--primary); 
   font-family: "Cinzel", serif;
   font-weight: 700;
 }
 .about-content p {
   font-size: 17px;
   line-height: 1.7;
-  color: var(--text-muted); /* changed from #444 */
+  color: var(--text-muted); 
   margin-bottom: 28px;
   max-width: 550px;
   font-family: "Playfair Display", serif;
@@ -379,7 +377,7 @@ html, body {
 .about-btn {
   display: inline-block;
   padding: 14px 40px;
-  background: var(--primary); /* replaced glass with gold */
+  background: var(--primary); 
   border: none;
   color: var(--secondary);
   text-decoration: none;
@@ -411,14 +409,14 @@ html, body {
   }
 }
 
-/* ==================== TESTIMONIALS SECTION ==================== */
 
 
-/* ===== CONTACT SECTION ===== */
+
+
 .contact-section {
   padding: 80px 40px;
   text-align: center;
-  background: var(--body-bg); /* replaced #F5F2EA */
+  background: var(--body-bg); 
 }
 .contact-title {
   font-size: 38px;
@@ -427,7 +425,7 @@ html, body {
 }
 .contact-subtitle {
   font-size: 17px;
-  color: var(--text-muted); /* replaced #444 */
+  color: var(--text-muted); 
   margin-bottom: 40px;
 }
 .contact-container {
@@ -436,7 +434,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   gap: 40px;
-  background: var(--card-bg); /* replaced rgba white glass */
+  background: var(--card-bg); 
   padding: 50px;
   border-radius: 25px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.1);
@@ -501,12 +499,12 @@ html, body {
   }
 }
 
-/* ===== FOOTER ===== */
+
 .footer {
   width: 100%;
   text-align: center;
   padding: 18px 0;
-  background: var(--nav-bg); /* replaced from #F5F2EA */
+  background: var(--nav-bg); 
   border-top: 1px solid rgba(255,255,255,0.35);
   font-size: 15px;
   color: white;
@@ -519,7 +517,7 @@ html, body {
   }
 }
 
-/* ===== LIGHTBOX POPUP ===== */
+
 .lightbox {
   display: none;
   position: fixed;
@@ -580,7 +578,7 @@ html, body {
     padding: 5px 15px;
   }
 }
-/* ===== POPUP OVERLAY ===== */
+
 .popup-overlay {
   position: fixed;
   inset: 0;
@@ -594,7 +592,7 @@ html, body {
 }
 
 .popup-content {
-  background: var(--card-bg); /* changed from #F5F2EA */
+  background: var(--card-bg); 
   padding: 40px 60px;
   border-radius: 20px;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
@@ -608,7 +606,7 @@ html, body {
 .popup-content h2 {
   font-family: "Playfair Display", serif;
   font-size: 28px;
-  color: var(--primary); /* changed from #1e3728 */
+  color: var(--primary); 
   margin-bottom: 10px;
 }
 
@@ -621,7 +619,7 @@ html, body {
 .popup-btn {
   display: inline-block;
   padding: 12px 40px;
-  background: var(--primary); /* changed from #E8F1E6 */
+  background: var(--primary); 
   border: none;
   border-radius: 35px;
   color: var(--secondary);

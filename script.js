@@ -1,4 +1,4 @@
-// ==================== TYPEWRITER EFFECT ====================
+
 const text1 = "Crafting";
 const text2 = "Memories";
 
@@ -30,7 +30,7 @@ function typeLine2() {
 document.addEventListener("DOMContentLoaded", typeLine1);
 
 
-// ==================== NAVBAR TOGGLE ====================
+
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 if (menuToggle && navLinks) {
@@ -41,7 +41,7 @@ if (menuToggle && navLinks) {
 }
 
 
-// ==================== SMOOTH SCROLL ====================
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener("click", e => {
     e.preventDefault();
@@ -52,7 +52,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 
-// ==================== ALBUM SLIDER ====================
 const albumSlider = document.querySelector(".album-slider");
 const albumCards = document.querySelectorAll(".album-card");
 const albumDotsContainer = document.querySelector(".slider-dots");
@@ -86,7 +85,7 @@ if (albumSlider && albumCards.length) {
 }
 
 
-// ==================== LIGHTBOX SYSTEM ====================
+
 const albumImages = ["m1.jpg", "m2.jpg", "m3.jpg", "m6.jpg"];
 let lightboxIndex = 0;
 
@@ -131,7 +130,7 @@ if (lightbox) {
 }
 
 
-// ==================== POPUP ON PAGE LOAD ====================
+
 window.addEventListener("load", () => {
   const popup = document.getElementById("popup");
   if (!popup) return;
@@ -156,7 +155,7 @@ document.addEventListener("click", e => {
 });
 
 
-// ==================== BOOKING FORM HANDLER ====================
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("bookingForm");
   if (!form) return;
@@ -175,8 +174,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ---------- WhatsApp Integration ----------
-    const whatsappNumber = "919118602187"; // your WhatsApp number
+    
+    const whatsappNumber = "919118602187"; 
     const whatsappMessage = encodeURIComponent(
       `📸 *New Album Booking Request!*\n\n` +
       `👤 Name: ${name}\n📧 Email: ${email}\n📞 Phone: ${phone}\n💽 Album Type: ${albumType}\n💬 Message: ${message || "N/A"}`
@@ -185,17 +184,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
     window.open(whatsappURL, "_blank");
 
-    // ---------- Email Integration ----------
+   
     const subject = encodeURIComponent("New Album Booking Request");
     const emailBody = encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAlbum Type: ${albumType}\nMessage: ${message}`
     );
 
-    const emailTo = "rg4116551@gmail.com"; // your email
+    const emailTo = "rg4116551@gmail.com"; 
     const mailtoLink = `mailto:${emailTo}?subject=${subject}&body=${emailBody}`;
     window.open(mailtoLink, "_blank");
 
-    // ---------- Show Success Popup ----------
+    
     showSuccessPopup();
   });
 });
