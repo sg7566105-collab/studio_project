@@ -1,14 +1,31 @@
 /* GOOGLE FONT */
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 
+:root {
+  --primary: #D4AF37;  /* Gold */
+  --secondary: #000000; /* Black (original) */
+  --white: #ffffff;
+  --dark: #222222;
+  --light: #f5f5f5;
+
+  /* helper vars (added for consistent dark-hybrid look) */
+  --nav-bg: #E8F1E6;    /* KEPT AS-IS because you said navbar is perfect */
+  --body-bg: #111111;   /* soft dark body */
+  --card-bg: #1a1a1a;   /* cards / boxes */
+  --text-light: #f0f0f0;
+  --text-muted: #bbbbbb;
+}
+
 /* ===== BASE ===== */
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background: #F5F2EA;
+  background: var(--body-bg); /* changed from #F5F2EA */
+  color: var(--text-light);
 }
 h1, h2, h3 {
   font-family: "Playfair Display", serif;
+  color: var(--primary);
 }
 * {
   box-sizing: border-box;
@@ -19,6 +36,8 @@ html, body {
 }
 
 /* ===== NAVBAR ===== */
+/* NOTE: I intentionally left navbar structure & colors as you had them,
+   because you said you adjusted it and don't want it changed. */
 .main-nav {
   width: 100%;
   height: 70px;
@@ -26,7 +45,7 @@ html, body {
   justify-content: space-between;
   align-items: center;
   padding: 18px 50px;
-  background: #E8F1E6;
+  background: var(--nav-bg); /* kept as your value (#E8F1E6) */
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   position: fixed;
@@ -46,7 +65,7 @@ html, body {
 }
 .nav-links a {
   text-decoration: none;
-  color: #333;
+  color: #333; /* keep your text color for nav as you set it */
   font-size: 15px;
   transition: 0.3s;
 }
@@ -102,7 +121,7 @@ html, body {
   font-family: "Parisienne", cursive;
   font-size: 85px;
   font-weight: 400;
-  color: #ffffff;
+  color: var(--primary); /* changed to gold */
   letter-spacing: 2px;
   line-height: 1.1;
   text-shadow: 0px 6px 28px rgba(0,0,0,0.75);
@@ -142,22 +161,22 @@ html, body {
   font-size: 18px;
   font-weight: 300;
   letter-spacing: 0.4px;
-  color: #f0f0f0;
+  color: var(--text-light); /* refined */
   text-shadow: 0px 3px 14px rgba(0,0,0,0.7);
 }
 .btn {
   display: inline-block;
   padding: 12px 34px;
-  border: 1px solid #fff;
-  background: transparent;
-  color: #fff;
+  border: none;                /* switched to solid button */
+  background: var(--primary);  /* gold */
+  color: var(--secondary);     /* black text on gold */
   border-radius: 30px;
   font-size: 14px;
   letter-spacing: 1.2px;
   transition: 0.3s ease;
 }
 .btn:hover {
-  background: rgba(255,255,255,0.2);
+  background: #c19b2e;
 }
 @media (max-width: 768px) {
   .hero {
@@ -176,14 +195,14 @@ html, body {
 .albums {
   padding: 40px 0 70px; /* reduced top/bottom gap */
   text-align: center;
-  background: #F5F2EA;
+  background: var(--body-bg); /* replaced from #F5F2EA */
   overflow: hidden;
 }
 
 .albums h2 {
   font-size: 32px;
   margin-bottom: 25px;
-  color: #1b3a28;
+  color: var(--primary); /* replaced #1b3a28 with gold */
   font-family: "Playfair Display", serif;
 }
 
@@ -214,9 +233,7 @@ html, body {
   scroll-snap-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   border: 1px solid rgba(0,0,0,0.04);
-
-
-  background:  #f7f5f2;
+  background: var(--card-bg); /* replaced #f7f5f2 */
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -229,20 +246,17 @@ html, body {
   height: 100%;
   display: block;
   object-fit: cover; /* removes top-bottom white space */
-  
   filter: brightness(0.97);
   transition: 0.3s ease;
 }
 
 .album-card:hover {
  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-transform: translateY(-3px);
-
-
+ transform: translateY(-3px);
 }
 .album-title {
   font-size: 16px;
-  color: #333;
+  color: var(--text-light); /* made title readable on dark card */
   padding: 10px;
   margin: 0;
   text-align: center;
@@ -263,12 +277,12 @@ transform: translateY(-3px);
 .dot {
   width: 10px;
   height: 10px;
-  background: rgb(rgb(22, 22, 22), rgb(16, 16, 16), rgb(0, 0, 0));
+  background: var(--text-muted); /* inactive dot */
   border-radius: 50%;
   transition: 0.3s;
 }
 .dot.active {
-  background: #1b1b1b;
+  background: var(--primary); /* active dot gold */
   transform: scale(1.2);
 }
 
@@ -277,17 +291,17 @@ transform: translateY(-3px);
   display: inline-block;
   margin-top: 25px;
   padding: 12px 42px;
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.06);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.45);
-  color: #000;
+  border: 1px solid rgba(212,175,55,0.12);
+  color: var(--text-light);
   font-size: 18px;
   border-radius: 40px;
   text-decoration: none;
   transition: 0.3s ease;
 }
 .album-view-more:hover {
-  background: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.08);
   transform: translateY(-3px);
 }
 
@@ -312,7 +326,7 @@ transform: translateY(-3px);
 /* ===== ABOUT SECTION ===== */
 .about-section {
   padding: 120px 40px;
-  background:  #F5F2EA;
+  background: var(--body-bg); /* replaced #F5F2EA */
   backdrop-filter: blur(8px);
 }
 .about-container {
@@ -323,7 +337,7 @@ transform: translateY(-3px);
   align-items: center;
   padding: 60px;
   border-radius: 18px;
-  background: #f7f5f2);
+  background: var(--card-bg); /* fixed and removed syntax error */
   box-shadow: 0 18px 45px rgba(0,0,0,0.1);
   -webkit-border-radius: 18px;
   -moz-border-radius: 18px;
@@ -345,37 +359,33 @@ transform: translateY(-3px);
 .about-content h2 {
   font-size: 42px;
   margin-bottom: 18px;
-  color: #222;
+  color: var(--primary); /* changed from #222 */
   font-family: "Cinzel", serif;
-font-weight: 700;
-
+  font-weight: 700;
 }
 .about-content p {
   font-size: 17px;
   line-height: 1.7;
-  color: #444;
+  color: var(--text-muted); /* changed from #444 */
   margin-bottom: 28px;
   max-width: 550px;
-font-family: "Playfair Display", serif;
-font-weight: 900;
-letter-spacing: 0.3px;
-
-
-
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
+  letter-spacing: 0.3px;
 }
 .about-btn {
   display: inline-block;
   padding: 14px 40px;
-  background: rgba(255,255,255,0.25);
-  border: 1px solid rgba(255,255,255,0.45);
-  color: #000;
+  background: var(--primary); /* replaced glass with gold */
+  border: none;
+  color: var(--secondary);
   text-decoration: none;
   font-size: 17px;
   border-radius: 35px;
   transition: 0.3s ease;
 }
 .about-btn:hover {
-  background: rgba(255,255,255,0.50);
+  background: #c19b2e;
   transform: translateY(-3px);
 }
 @media (max-width: 768px) {
@@ -401,20 +411,20 @@ letter-spacing: 0.3px;
 /* ==================== TESTIMONIALS SECTION ==================== */
 
 
-
 /* ===== CONTACT SECTION ===== */
 .contact-section {
   padding: 120px 40px;
   text-align: center;
-  background: #F5F2EA;
+  background: var(--body-bg); /* replaced #F5F2EA */
 }
 .contact-title {
   font-size: 38px;
   margin-bottom: 10px;
+  color: var(--primary);
 }
 .contact-subtitle {
   font-size: 17px;
-  color: #444;
+  color: var(--text-muted); /* replaced #444 */
   margin-bottom: 40px;
 }
 .contact-container {
@@ -423,10 +433,11 @@ letter-spacing: 0.3px;
   display: flex;
   justify-content: space-between;
   gap: 40px;
-  background: rgba(255,255,255,0.25);
+  background: var(--card-bg); /* replaced rgba white glass */
   padding: 50px;
   border-radius: 25px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  border: 1px solid rgba(212,175,55,0.12);
 }
 .contact-info {
   flex: 1;
@@ -458,7 +469,7 @@ letter-spacing: 0.3px;
   border-radius: 30px;
   font-size: 18px;
   text-decoration: none;
-  color: white;
+  color: var(--white);
   font-weight: 500;
   transition: 0.3s;
 }
@@ -492,10 +503,10 @@ letter-spacing: 0.3px;
   width: 100%;
   text-align: center;
   padding: 18px 0;
-  background:#F5F2EA;
+  background: var(--nav-bg); /* replaced from #F5F2EA */
   border-top: 1px solid rgba(255,255,255,0.35);
   font-size: 15px;
-  color: #333;
+  color: var(--text-muted);
   margin-top: 40px;
 }
 @media (max-width: 768px) {
@@ -580,7 +591,7 @@ letter-spacing: 0.3px;
 }
 
 .popup-content {
-  background:#F5F2EA;
+  background: var(--card-bg); /* changed from #F5F2EA */
   padding: 40px 60px;
   border-radius: 20px;
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
@@ -594,23 +605,23 @@ letter-spacing: 0.3px;
 .popup-content h2 {
   font-family: "Playfair Display", serif;
   font-size: 28px;
-  color: #1e3728;
+  color: var(--primary); /* changed from #1e3728 */
   margin-bottom: 10px;
 }
 
 .popup-content p {
   font-size: 16px;
-  color: #444;
+  color: var(--text-muted);
   margin-bottom: 25px;
 }
 
 .popup-btn {
   display: inline-block;
   padding: 12px 40px;
-  background: #E8F1E6;
+  background: var(--primary); /* changed from #E8F1E6 */
   border: none;
   border-radius: 35px;
-  color: #0a0909;
+  color: var(--secondary);
   font-size: 18px;
   text-decoration: none;
   font-weight: 600;
@@ -640,4 +651,3 @@ letter-spacing: 0.3px;
   from { transform: scale(0.7); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
-
