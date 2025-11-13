@@ -18,10 +18,10 @@
     wedding: {
       title: "Wedding Moments",
       images: [
-        "albums/wedding/1.jpg",
-        "albums/wedding/2.jpg",
-        "albums/wedding/3.jpg",
-        "albums/wedding/4.jpg"
+        "m1.jpg",
+        "m2.jpg",
+        "m3.jpg",
+        "m4.jpg"
       ]
     },
     prewedding: {
