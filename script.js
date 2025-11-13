@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 🔥 Google Apps Script URL (Your backend)
-    const scriptURL = "https://script.google.com/macros/s/AKfycbx5Y8JBkHLajV1uIjtqxD-dfQJ8xwlseO8ksSGKTxFlXM3VULZIExl5J3q4tgMJB_c/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxzO5paN3czuvdR_73J_tSGY-qs9KgmTJU8NHspriNUn3jMZ5nTRDWF3GmS3VCs_Ai6/exec";
 
     try {
       // 🔥 SEND DATA TO GOOGLE SHEET
