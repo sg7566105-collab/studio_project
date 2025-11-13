@@ -9,7 +9,8 @@
   --light: #f5f5f5;
 
   /* helper vars (added for consistent dark-hybrid look) */
-  --nav-bg: #E8F1E6;    /* KEPT AS-IS because you said navbar is perfect */
+  --nav-bg: #b5b3b3;
+    /* KEPT AS-IS because you said navbar is perfect */
   --body-bg: #111111;   /* soft dark body */
   --card-bg: #1a1a1a;   /* cards / boxes */
   --text-light: #f0f0f0;
@@ -70,8 +71,9 @@ html, body {
   transition: 0.3s;
 }
 .nav-links a:hover {
-  color: #000;
+  color: #ffd103;
   letter-spacing: 0.5px;
+  
 }
 .menu-toggle {
   display: none;
@@ -506,7 +508,7 @@ html, body {
   background: var(--nav-bg); /* replaced from #F5F2EA */
   border-top: 1px solid rgba(255,255,255,0.35);
   font-size: 15px;
-  color: var(--text-muted);
+  color: white;
   margin-top: 40px;
 }
 @media (max-width: 768px) {
