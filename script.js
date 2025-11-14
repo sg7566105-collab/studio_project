@@ -182,6 +182,10 @@ await fetch("https://script.google.com/macros/s/AKfycbx61fetM4-0iRJDJy8t3BO_jYg_
     message
   })
 });
+function doGet() {
+  return ContentService.createTextOutput("GET OK");
+}
+
 
 
 
