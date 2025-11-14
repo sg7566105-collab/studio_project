@@ -167,27 +167,50 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // 🔥 Google Apps Script URL (Your backend)
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxzO5paN3czuvdR_73J_tSGY-qs9KgmTJU8NHspriNUn3jMZ5nTRDWF3GmS3VCs_Ai6/exec";
+  // 🔥 Airtable Configuration
+const AirtableToken = "patcTL0eRyuXO3z2v.67ceb296e99f6e24f6c3baf24732bbd739065923a7d8316731e620c9662c9277";
+const BaseID = "appx9UG49cuJwude5";
+const TableName = "tblLa2wKfiNCGDmDT";
 
-    try {
-      // 🔥 SEND DATA TO GOOGLE SHEET
-      await fetch(scriptURL, {
-  method: "POST",
-  mode: "no-cors",
-  body: JSON.stringify({
-    name,
-    email,
-    phone,
-    albumType,
-    message
-  })
-});
+try {
+  const payload = {
+    records: [
+      {
+        fields: {
+          Name: name,
+          Email: email,
+          Phone: phone,
+          Service: albumType,
+          Message: message
+        }
+      }
+    ]
+  };
 
-    } catch (error) {
-      alert("Error saving data. Check script URL.");
-      return;
-    }
+  const response = await fetch(`https://api.airtable.com/v0/${BaseID}/${TableName}`, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${AirtableToken}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+
+  const result = await response.json();  // <-- YE ADD KIYA
+
+  console.log("Airtable Response:", result);  // <-- Yaha EXACT error aayega
+
+  if (!response.ok) {
+    alert("Airtable Error: Check console");
+    return;
+  }
+
+} catch (error) {
+  console.error("EXACT JS Error:", error);   // <-- JS error aayega
+  alert("Airtable Connection Error! Console check karo.");
+}
+
+
 
     // 🔥 WhatsApp Message
     const whatsappNumber = "919118602187";
