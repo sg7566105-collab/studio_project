@@ -151,7 +151,7 @@
     "instagram3.jpg",
     "instagram4.jpg",
     "instagram5.jpg",
-    "instagram6.jpg"
+    "instagram1.jpg"
   ];
 
   let instaIndex = 0;
