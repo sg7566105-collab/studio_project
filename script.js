@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 🔥 Airtable Configuration
 
-await fetch("https://script.google.com/macros/s/AKfycbx61fetM4-0iRJDJy8t3BO_jYg_Esa5HZQQ6gi7CWFBmZVrlN4uUC8uV0NsHp7NLSLx/execL", {
+await fetch("https://script.google.com/macros/s/AKfycbx61fetM4-0iRJDJy8t3BO_jYg_Esa5HZQQ6gi7CWFBmZVrlN4uUC8uV0NsHp7NLSLx/exec", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
