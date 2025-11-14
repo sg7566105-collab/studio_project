@@ -168,47 +168,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
   // 🔥 Airtable Configuration
-const AirtableToken = "patcTL0eRyuXO3z2v.67ceb296e99f6e24f6c3baf24732bbd739065923a7d8316731e620c9662c9277";
-const BaseID = "appx9UG49cuJwude5";
-const TableName = "tblLa2wKfiNCGDmDT";
 
-try {
-  const payload = {
-    records: [
-      {
-        fields: {
-          Name: name,
-          Email: email,
-          Phone: phone,
-          Service: albumType,
-          Message: message
-        }
-      }
-    ]
-  };
-
-  const response = await fetch(`https://api.airtable.com/v0/${BaseID}/${TableName}`, {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${AirtableToken}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(payload)
-  });
-
-  const result = await response.json();  // <-- YE ADD KIYA
-
-  console.log("Airtable Response:", result);  // <-- Yaha EXACT error aayega
-
-  if (!response.ok) {
-    alert("Airtable Error: Check console");
-    return;
-  }
-
-} catch (error) {
-  console.error("EXACT JS Error:", error);   // <-- JS error aayega
-  alert("Airtable Connection Error! Console check karo.");
-}
+await fetch("https://script.google.com/macros/s/AKfycbx61fetM4-0iRJDJy8t3BO_jYg_Esa5HZQQ6gi7CWFBmZVrlN4uUC8uV0NsHp7NLSLx/execL", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    name,
+    email,
+    phone,
+    albumType,
+    message
+  })
+});
 
 
 
