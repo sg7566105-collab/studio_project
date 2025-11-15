@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("bookingForm");
   if (!form) return;
 
-  form.addEventListener("submit", async function (e) {
+  form.addEventListener("submit", function (e) {
     e.preventDefault();
 
     // Collect form data
@@ -18,21 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Send to Google Sheet
-    try {
-      await fetch(
-        "https://script.google.com/macros/s/AKfycbx61fetM4-0iRJDJy8t3BO_jYg_Esa5HZQQ6gi7CWFBmZVrlN4uUC8uV0NsHp7NLSLx/exec",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email, phone, albumType, message })
-        }
-      );
-    } catch (err) {
-      alert("Server error — Try again later.");
-      return;
-    }
-
     // WhatsApp Message
     const whatsappNumber = "919118602187";
     const whatsappMessage = encodeURIComponent(
@@ -43,14 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Open WhatsApp
     window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
 
-    // Prepare Email but DON'T auto-open (popup block hoga)
-    window.bookingEmailLink = `mailto:rg4116551@gmail.com?subject=${encodeURIComponent(
+    // Email link (optional)
+    window.location.href = `mailto:rg4116551@gmail.com?subject=${encodeURIComponent(
       "New Album Booking Request"
     )}&body=${encodeURIComponent(
       `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAlbum Type: ${albumType}\nMessage: ${message}`
     )}`;
 
-    // Show success popup
+    // Show your success popup
     showSuccessPopup();
 
     // Reset form
@@ -63,13 +48,6 @@ function showSuccessPopup() {
   if (popup) {
     popup.style.display = "flex";
     popup.style.opacity = "1";
-
-    // Inject email link into popup if needed
-    const emailBtn = popup.querySelector(".btn-email");
-    if (emailBtn) {
-      emailBtn.href = window.bookingEmailLink;
-    }
-
     setTimeout(() => closeSuccessPopup(), 5000);
   }
 }
