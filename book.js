@@ -2,44 +2,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("bookingForm");
   if (!form) return;
 
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    // Collect form data
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const phone = document.getElementById("phone").value.trim();
     const albumType = document.getElementById("albumType").value.trim();
     const message = document.getElementById("message").value.trim();
 
-    // Required validation
-    if (!name || !email || !phone || !albumType) {
-      alert("Please fill all required fields.");
-      return;
-    }
-
-    // WhatsApp Message
+    // WHATSAPP
     const whatsappNumber = "919118602187";
     const whatsappMessage = encodeURIComponent(
-      `📸 *New Album Booking Request!*\n\n` +
+      `📸 *New Album Booking Request!* \n\n` +
       `👤 Name: ${name}\n📧 Email: ${email}\n📞 Phone: ${phone}\n💽 Album Type: ${albumType}\n💬 Message: ${message || "N/A"}`
     );
 
-    // Open WhatsApp
     window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, "_blank");
 
-    // Email link (optional)
-    window.location.href = `mailto:rg4116551@gmail.com?subject=${encodeURIComponent(
-      "New Album Booking Request"
-    )}&body=${encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAlbum Type: ${albumType}\nMessage: ${message}`
-    )}`;
+    // EMAIL via Web3Forms
+    const formData = new FormData(form);
+    formData.append("Name", name);
+    formData.append("Email", email);
+    formData.append("Phone", phone);
+    formData.append("Album Type", albumType);
+    formData.append("Message", message);
 
-    // Show your success popup
-    showSuccessPopup();
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
 
-    // Reset form
-    form.reset();
+    const result = await response.json();
+
+    if (result.success) {
+      showSuccessPopup();
+      form.reset();
+    } else {
+      alert("Email failed. Try again.");
+    }
   });
 });
 
