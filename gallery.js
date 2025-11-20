@@ -28,7 +28,7 @@
     prewedding: {
       title: "Pre-Wedding",
       images: [
-        "p.jpg",
+        "p (3).jpg",
         "p1.jpg",
         "p2.jpg",
         "p3.jpg",
